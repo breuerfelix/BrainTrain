@@ -1,0 +1,55 @@
+:root {
+	--primary-green: #2ECC71;
+	--primary-yellow: #FED330;
+	--primary-red: #E74C3C;
+	--primary-blue: #34495E;
+	--secondary-green: #27AE60;
+	--secondary-yellow: #F7B731;
+	--secondary-red: #C0392B;
+	--secondary-blue: #2C3E50;
+	--background: #ECF0F1;
+	--font-color: #FFFFFF;
+}
+
+body {
+	font-family: 'Roboto', 'sans-serif';
+	font-color: var(--font-color, black);
+	height: 100vh;
+}
+
+.cp-bg {
+	background-color: var(--background, gray);
+}
+
+.cpg {
+	color: var(--primary-green, green);
+}
+
+.cpg-bg {
+	background-color: var(--primary-green, green);
+}
+
+.cpy {
+	color: var(--primary-yellow, yellow);
+}
+
+.cpy-bg {
+	background-color: var(--primary-yellow, yellow);
+}
+
+.cpr {
+	color: var(--primary-red, red);
+}
+
+.cpr-bg {
+	background-color: var(--primary-red, red);
+}
+
+.cpb {
+	color: var(--primary-blue, blue);
+}
+
+.cpb-bg {
+	background-color: var(--primary-blue, blue);
+}
+
