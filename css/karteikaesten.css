@@ -1,0 +1,96 @@
+.content-header {
+    color: black;
+    margin: 20px 5%;
+    font-size: 15px;
+}
+
+.ch-title, .cat-title {
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.ch-subtitle {
+    display: flex;
+    color: black;
+}
+
+.ch-subtitle-right {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+
+.ch-subtitle-right > div {
+    margin-right: 10px;
+}
+
+.content-header input, .content-header select {
+    border-color: black;
+    border-radius: 0;
+    border-width: 2px;
+    background-color: var(--background);
+}
+
+.content-header input::placeholder {
+    color: black;
+}
+
+.categories {
+    color: black;
+    margin: 20px 5%;
+}
+
+.cat-title {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.cat-content {
+    display: flex;
+}
+
+.cat-divider {
+    margin: 0 5px;
+}
+
+.cat-card {
+    width: 225px;
+    height: 250px;
+    background-color: white;
+}
+
+.cc-title {
+    background-color: var(--primary-green);
+    text-align: center;
+    color: white;
+    font-weight: 500;
+}
+
+.cc-content {
+    margin: 10px;
+}
+
+.ccc-header {
+    display: flex;
+    align-items: center;
+}
+
+.ccc-title {
+    font-weight: 500;
+}
+
+.ccc-badge {
+    margin-left: 5px;
+    background-color: var(--secondary-green);
+    padding: 3px 5px;
+    color: white;
+    text-align: center;
+}
+
+.ccc-score {
+
+}
+
+.ccc-score + div {
+    font-size: 7px;
+}

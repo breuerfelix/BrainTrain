@@ -67,6 +67,7 @@ body {
 .topbar {
 	max-height: var(--navbar-height);
 	min-height: var(--navbar-height);
+	height: var(--navbar-height);
 }
 
 .noselect {

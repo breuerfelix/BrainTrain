@@ -14,11 +14,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10% 5%;
+    padding: 30px 5%;
+    flex-direction: column;
 }
 
 #content-block {
     width: 100%;
+}
+
+.content-left {
+    align-self: flex-start;
+    padding: 0;
+    margin: 0;
 }
 
 .content-input {
@@ -41,13 +48,20 @@
     color: black;
     margin: 5% 10%;
     font-weight: 400;
+}
+
+.ct-big {
     font-size: 150%;
 }
 
 .bar {
-    height: 7px;
+    height: 4px;
     margin: 0;
     padding: 0;
+}
+
+.content-green {
+    color: var(--primary-green)
 }
 
 ::placeholder {
@@ -59,9 +73,28 @@
 
 .content-button {
     margin-right: 15px;
-    border: none;
+    border: 0 solid var(--secondary-yellow);
+    border-width: 0 0 2px 0;
+    border-radius: 0;
     font-weight: 600;
     color: white;
     max-height: 30px;
     min-width: 80px;
+}
+
+.signup {
+    padding: auto;
+}
+
+.input-and-label {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    color: black;
+    padding: 5px;
+}
+
+.input-and-label label {
+    margin-right: 10px;
 }
