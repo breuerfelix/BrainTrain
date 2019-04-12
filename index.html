@@ -7,6 +7,8 @@
     <meta http-equiv='X-UA-Compatible' content='ie=edge'>
     <link rel='stylesheet' href='/css/bulma.min.css'>
     <link rel='stylesheet' href='/css/main.css'>
+    <link rel='stylesheet' href='/css/sidebar.css'>
+    <link rel='stylesheet' href='/css/content.css'>
     <link
         href='https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i'
         rel='stylesheet'
@@ -16,8 +18,78 @@
     <title>BrainTrain</title>
 </head>
 
-<body class='cp-bg'>
+<body class='cp columns is-mobile'>
+    <!--sidebar start-->
+    <div id="sidebar" class="column csb noselect" style="padding-right: 0;">
+        <!--top start-->
+        <div class="title topbar csg white">
+            <div class="title-logo"><img src="/images/logo/logo.svg" alt="BrainTrain" width="35"></div>
+            <div class="title-start">Brain</div>
+            <div class="title-end">Train</div>
+        </div>
+        <!--top end-->
 
+        <!--items start-->
+        <div class="sidebar-items">
+            
+            <!--item start-->
+            <a href="/" class="sidebar-link">
+                <div class="sidebar-item">
+                        <div class="sb-logo">
+                            <img src="/images/icons/home.svg" alt="BrainTrain" width="20">
+                        </div>
+        
+                        <div class="sb-label">
+                            Home
+                        </div>       
+                </div>
+            </a>
+            <!--item end-->
+
+            <!--item start-->
+            <a href="/karteikaesten.html" class="sidebar-link">
+                <div class="sidebar-item">
+                    <div class="sb-logo">
+                        <img src="/images/icons/home.svg" alt="BrainTrain" width="20">
+                    </div>
+    
+                    <div class="sb-label">
+                        Karteikästen
+                    </div>
+    
+                    <div class="sb-badge cpg">
+                        <div class="sb-badge-label">33</div>
+                    </div>
+                    </div>
+                </div>
+            </a>
+            <!--item end-->
+
+        </div>
+        <!--items end-->
+    </div>
+    <!--sidebar end-->
+
+    <!--content start-->
+    <div id="content" class="column">
+        <!--content-bar start-->
+        <div id="content-bar" class="cpg topbar">
+            <input class="content-input cpg white" type="text" placeholder="Nutzername">
+            <input class="content-input cpg white" type="password" placeholder="Passwort">
+            <a class="button content-button cpy">Login</button>
+            <a href="#" class="white small">Registrieren</a>
+        </div>
+        <!--content-bar end-->
+        
+        <div id="content-main" class="cp">
+            <div id="content-block" class="white-bg">
+                <hr class="bar cpg">
+                <h1 class="content-heading">Willkommen bei BrainTrain</h1>
+                <p class="content-text">Hier haben sich <b>32 Nutzer</b> angemeldet und zusammen <b>124 Lernkarten</b> in <b>22 Karteien</b> erstellt.</p> 
+            </div>
+        </div>
+    </div>
+    <!--content end-->
 </body>
 
 </html>
