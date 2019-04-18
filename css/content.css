@@ -93,6 +93,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 20px;
 }
 
 .signup {
@@ -115,7 +116,7 @@
 }
 
 .input-and-label input {
-    padding: 4px 110px 4px 5px;
+    padding: 4px 180px 4px 5px;
     border-radius: 0;
     border-color: #d3d3d3;
     border-style: solid;
@@ -128,6 +129,11 @@
 }
 
 .content-agreement {
-    appearance: none;
-    border-radius: 0;
+    align-self: center;
+    margin-left: 40%;
+}
+
+#button-register {
+    align-self: center;
+    max-width: 10%;
 }
