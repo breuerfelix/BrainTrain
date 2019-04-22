@@ -103,13 +103,23 @@
                                 Nutzername
                             </label>
                             <input type="text" id="name" placeholder="maxmusterman">
+                            <div class="warning-box">
+                                <div class="left-arrow"></div>
+                                <p>Dieser Nutzername ist bereits vergeben!</p>
+                            </div>
                         </div>
+
+                        
                             
                         <div class="input-and-label">
                             <label for="email">
                                 E-Mail
                             </label>
                             <input type="text" id="email" placeholder="muster@example.com">
+                            <div class="warning-box">
+                                <div class="left-arrow"></div>
+                                <p>Diese Mail ist bereits vergeben!</p>
+                            </div>
                         </div>
 
                         <div>&nbsp;</div>
@@ -126,6 +136,10 @@
                                 Passwort wiederholen
                             </label>
                             <input type="text" id="password-again">
+                            <div class="warning-box">
+                                <div class="left-arrow"></div>
+                                <p>Die Passwörter stimmen nicht überein!</p>
+                            </div>
                         </div>
                         <!--form end-->
 
@@ -133,6 +147,10 @@
                         <div class="input-and-label content-agreement">
                             <input type="checkbox"></input>
                             <label class="content-text-signup">Ich habe die nicht vorhandene Dateschutzerklärung zur Kenntnis genommen.</label>
+                            <div class="warning-box">
+                                <div class="left-arrow"></div>
+                                <p>Bitte setzen Sie hier einen Haken!</p>
+                            </div>
                         </div>
                         <!--agreement end-->
 

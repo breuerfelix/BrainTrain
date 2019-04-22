@@ -103,6 +103,7 @@
 }
 
 .input-and-label {
+    position: relative;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -122,6 +123,29 @@
     border-style: solid;
 }
 
+.warning-box {
+    position: absolute;
+    left: 650px;
+    min-width: 300px;
+}
+
+.warning-box p {
+    background-color: red;
+    color: white;
+    padding: 0 4px;
+}
+
+.warning-box .left-arrow {
+    position: absolute;
+    left: -30px;
+    top: 2px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 35px 10px 0;
+    border-color: transparent #ff0000 transparent transparent;
+}
+
 .input-and-label ::placeholder {
     color: #d3d3d3;
     opacity: 1;
@@ -133,7 +157,19 @@
     margin-left: 40%;
 }
 
+.content-agreement .warning-box {
+    position: absolute;
+    left: 408px;
+    min-width: 300px;
+}
+
 #button-register {
+    margin-top: 30px;
     align-self: center;
     max-width: 10%;
+}
+
+#button-register a {
+    font-size: 150%;
+    padding: 20px 40px;
 }
