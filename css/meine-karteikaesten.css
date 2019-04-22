@@ -82,8 +82,8 @@
 .ccc-title {
     font-weight: 500;
     font-size: 18px;
-    width: 175px;
-    max-width: 175px;
+    width: 500px;
+    max-width: 500px;
 }
 
 .ccc-badge {
@@ -103,10 +103,23 @@
 }
 
 .ccc-content {
-    max-height:120px;
+    max-height: 120px;
     height: 120px;
 }
 
 .ccc-footer {
     text-align: center;
+    margin-top: 35px;
+}
+
+.ccc-footer .del-btn {
+    background-color: var(--primary-red);
+    border-color: var(--secondary-red);
+    min-width: 30px;
+}
+
+.ccc-footer .suc-btn {
+    background-color: var(--primary-green);
+    border-color: var(--secondary-green);
+    width: 90px;
 }
