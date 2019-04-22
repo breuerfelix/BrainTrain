@@ -11,13 +11,13 @@
 	--font-color: #FFFFFF;
 
 	--navbar-height: 50px;
-	--sidebar-width: 225px;
+	--sidebar-width: 240px;
 }
 
 body {
 	font-family: 'Roboto', 'sans-serif';
 	color: var(--font-color, black);
-	height: 100vh;
+	min-height: 100vh;
 }
 
 .white {
