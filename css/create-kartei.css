@@ -19,7 +19,11 @@
 }
 
 #content-block {
-    width: 100%;
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .content-input {
@@ -40,8 +44,14 @@
     color: black;
     text-align: center;
     font-weight: 500;
-    font-size: 400%;
+    font-size: 100%;
     margin: 10px 0;
+}
+
+.content-left-fixed {
+    align-self: flex-start;
+    margin-left: -55px;
+    margin-top: -20px;
 }
 
 .content-text-signup {
@@ -64,6 +74,7 @@
     height: 4px;
     margin: 0;
     padding: 0;
+    width: 100%;
 }
 
 .content-green {
@@ -172,4 +183,8 @@
 #button-register a {
     font-size: 150%;
     padding: 20px 40px;
+}
+
+#description {
+    min-height: 150px;
 }
