@@ -144,6 +144,8 @@
     background-color: red;
     color: white;
     padding: 0 4px;
+    margin-left: -150px;
+    width: 100px;
 }
 
 .warning-box .left-arrow {
@@ -155,6 +157,7 @@
     border-style: solid;
     border-width: 10px 35px 10px 0;
     border-color: transparent #ff0000 transparent transparent;
+    margin-left: -150px;
 }
 
 .input-and-label ::placeholder {
@@ -183,8 +186,26 @@
 #button-register a {
     font-size: 150%;
     padding: 20px 40px;
+    margin-left: -90px;;
 }
 
 #description {
     min-height: 150px;
+}
+
+#content-main > h1 {
+    margin: -10px;
+    margin-bottom: 10px;
+}
+
+#content-main .content-subtitle {
+    color: black;
+    margin: -10px;
+    margin-bottom: 30px;
+}
+
+#content-block > h1 {
+    margin: 20px;
+    margin-left: 30px;
+    font-size: 25px;
 }
