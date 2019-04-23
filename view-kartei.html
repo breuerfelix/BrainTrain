@@ -8,7 +8,7 @@
     <link rel='stylesheet' href='/css/bulma.min.css'>
     <link rel='stylesheet' href='/css/main.css'>
     <link rel='stylesheet' href='/css/sidebar.css'>
-    <link rel='stylesheet' href='/css/edit-kartei.css'>
+    <link rel='stylesheet' href='/css/view-kartei.css'>
     <link
         href='https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i'
         rel='stylesheet'
@@ -107,7 +107,14 @@
                             <div class="cus-sublabel">
                                 Naturwissenschaften > Mathematik
                             </div>
-
+                        </div>
+                        <div class="column">
+                            <div class="cus-label">
+                                Erstellt von
+                            </div>
+                            <div class="cus-sublabel">
+                                MaxMustermann
+                            </div>
                         </div>
                         <div class="column">
                             <div class="cus-label">
@@ -115,12 +122,6 @@
                             </div>
                             <div class="cus-sublabel">
                                 0%
-                            </div>
-
-                        </div>
-                        <div class="column">
-                            <div class="cus-btn">
-                                <a href="#">Bearbeiten</a>
                             </div>
                         </div>
                         <div class="column">
@@ -143,56 +144,24 @@
                             <div class="kartei">
                                 <div class="k-number">#1</div>
                                 <div class="k-title">Titel der Karte</div>
-                                <div class="k-footer">
-                                    <div class="cus-btn">
-                                        <a href="#">Bearbeiten</a>
-                                    </div>
-                                    <div class="cus-btn btn-del">
-                                        <a href="#"><img src="/images/icons/delete.svg" width='20px' style="padding-top: 5px;"></a>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                         <div class="cus-box">
                             <div class="kartei">
                                 <div class="k-number">#2</div>
                                 <div class="k-title">Titel der Karte</div>
-                                <div class="k-footer">
-                                    <div class="cus-btn">
-                                        <a href="#">Bearbeiten</a>
-                                    </div>
-                                    <div class="cus-btn btn-del">
-                                        <a href="#"><img src="/images/icons/delete.svg" width='20px' style="padding-top: 5px;"></a>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                         <div class="cus-box">
                             <div class="kartei">
                                 <div class="k-number">#3</div>
                                 <div class="k-title">Titel der Karte</div>
-                                <div class="k-footer">
-                                    <div class="cus-btn">
-                                        <a href="#">Bearbeiten</a>
-                                    </div>
-                                    <div class="cus-btn btn-del">
-                                        <a href="#"><img src="/images/icons/delete.svg" width='20px' style="padding-top: 5px;"></a>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                         <div class="cus-box">
                             <div class="kartei">
                                 <div class="k-number">#4</div>
                                 <div class="k-title">Titel der Karte</div>
-                                <div class="k-footer">
-                                    <div class="cus-btn">
-                                        <a href="#">Bearbeiten</a>
-                                    </div>
-                                    <div class="cus-btn btn-del">
-                                        <a href="#"><img src="/images/icons/delete.svg" width='20px' style="padding-top: 5px;"></a>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -206,7 +175,24 @@
                                         Titel
                                     </div>
                                     <div class="column">
-                                        <input class='input' type="text">
+                                        <b>Titel der Karte</b>
+                                    </div>
+                                    <div class="column" style="">
+                                        <div class="hexagon hexagon-counter hexagon-display-center">
+                                            <p>0</p>
+                                        </div>
+                                        <div class="hexagon hexagon-counter hexagon-display-center">
+                                            <p>1</p>
+                                        </div>
+                                        <div class="hexagon hexagon-counter hexagon-display-center green">
+                                            <p>2</p>
+                                        </div>
+                                        <div class="hexagon hexagon-counter hexagon-display-center">
+                                            <p>3</p>
+                                        </div>
+                                        <div class="hexagon hexagon-counter hexagon-display-center">
+                                            <p>4</p>
+                                        </div>
                                     </div>
                                 </div>
                                 <!-- row end -->
@@ -216,7 +202,7 @@
                                         Frage
                                     </div>
                                     <div class="column">
-                                        <textarea class='textarea' type="text"></textarea>
+                                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
                                     </div>
                                 </div>
                                 <!-- row end -->
@@ -226,13 +212,13 @@
                                         Antwort
                                     </div>
                                     <div class="column">
-                                        <textarea class='textarea' type="text"></textarea>
+                                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
                                     </div>
                                 </div>
                                 <!-- row end -->
                                 <div class="columns">
                                     <div class="column" style="text-align: center;">
-                                        <a href="/view-kartei.html" class="cus-btn warn">Speichern</a>
+                                        <button class="cus-btn warn">Speichern</button>
                                         <button class='cus-btn del'>Abbrechen</button>
                                     </div>
                                 </div>
