@@ -237,6 +237,52 @@
     border-color: grey;
 }
 
-a.cus-btn {
-    padding: 3px 17px;
+.hexagon {
+  position: relative;
+  width: 30px; 
+  height: 17.32px;
+  background-color: #434343;
+  margin: 8.66px 0;
+  display: inline-block;
+}
+
+.hexagon:before,
+.hexagon:after {
+  content: "";
+  position: absolute;
+  width: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+}
+
+.hexagon:before {
+  bottom: 100%;
+  border-bottom: 8.66px solid #434343;
+}
+
+.hexagon:after {
+  top: 100%;
+  width: 0;
+  border-top: 8.66px solid #434343;
+}
+
+.hexagon > p {
+    position: relative;
+    top: -5px;
+    color: white;
+    font-weight: 600;
+    font-size: 20px;
+    padding-left: 10px;
+}
+
+.hexagon.green {
+  background-color: var(--primary-green);
+}
+
+.hexagon.green:before {
+  border-bottom: 8.66px solid var(--primary-green);
+}
+
+.hexagon.green:after {
+  border-top: 8.66px solid var(--primary-green);
 }
