@@ -123,3 +123,12 @@
     border-color: var(--secondary-green);
     width: 90px;
 }
+
+.profile-dummy {
+    height: 40px;
+    width: 40px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    margin-top: 5px;
+}
