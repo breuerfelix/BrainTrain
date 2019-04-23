@@ -328,3 +328,7 @@
     padding: 10px 30px;
     margin: 15px 20px;
 }
+
+.card-status li {
+    margin: 0 15px;
+}
