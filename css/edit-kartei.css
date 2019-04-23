@@ -215,3 +215,24 @@
     border-color: var(--secondary-red) !important;
     width: 40px !important;
 }
+
+.cus-btn {
+    cursor: pointer;
+    font-weight: 800;
+}
+
+.cus-btn.warn {
+    background-color: var(--primary-yellow);
+    border-color: var(--secondary-yellow);
+}
+
+.cus-btn.del {
+    background-color: var(--primary-red);
+    border-color: var(--secondary-red);
+}
+
+.cus-box input, .cus-box textarea {
+    border-radius: 0px;
+    border-width: 1px;
+    border-color: grey;
+}

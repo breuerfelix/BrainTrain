@@ -20,9 +20,13 @@
 }
 
 body {
-	font-family: 'Roboto', 'sans-serif';
+	font-family: 'Roboto', 'sans-serif' !important;
 	color: var(--font-color, black);
 	min-height: 100vh;
+}
+
+button {
+	font-family: 'Roboto', 'sans-serif' !important;
 }
 
 .white {
