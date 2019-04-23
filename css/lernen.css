@@ -21,7 +21,7 @@
 .content-block-wrapper {
     width: 70%;
     position: relative;
-    padding-bottom: 80px;
+   
 }
 
 .content-block {
@@ -135,7 +135,7 @@
 }
 
 #button-reveal {
-    margin-top: 50px;
+    margin: 50px 0;
     width: 100%;
     display: flex;
     align-items: center;
@@ -150,6 +150,35 @@
     color: white;
     font-size: 120%;
     padding: 20px 5%;
+    margin: 10px;
+}
+
+#button-revealed {
+    margin-top: 50px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#button-revealed a {
+    font-weight: 600;
+    color: white;
+    font-size: 100%;
+    padding: 5px 5%;
+    margin: 10px;
+}
+
+#button-revealed .correct {
+    border: 0 solid var(--secondary-green);
+    border-width: 0 0 4px 0;
+    border-radius: 0;
+}
+
+#button-revealed .wrong {
+    border: 0 solid var(--secondary-red);
+    border-width: 0 0 4px 0;
+    border-radius: 0;
 }
 
 .bar {
