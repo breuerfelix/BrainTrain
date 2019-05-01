@@ -20,6 +20,6 @@ func Index(w http.ResponseWriter, r *http.Request) {
 	data := LayoutPageData{
 		Filename: "profil",
 	}
-	tmpl.Execute(w, data)
+	tmpl.ExecuteTemplate(w, "page", data)
 	//fmt.Fprintf(w, "Welcome to my website! yo retard")
 }
