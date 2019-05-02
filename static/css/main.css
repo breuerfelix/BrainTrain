@@ -166,3 +166,13 @@ button {
 	text-decoration: none;
 	cursor: pointer;
 }
+
+.danger-button {
+	background-color: var(--primary-red);
+	border-color: var(--secondary-red);
+}
+
+.success-button {
+	background-color: var(--primary-green);
+	border-color: var(--secondary-green);
+}
