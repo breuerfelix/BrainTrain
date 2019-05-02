@@ -2,10 +2,15 @@
 <html>
 	{{template "header" .}}
 	<body>
-        <div class='content'>
-            {{template "content" .}}
+        <div class="row cp">
+            <div id="sidebar" class="col-xs-12 col-sm-4 col-md-3 col-lg-2 csb">
+                {{template "sidebar" .}}
+            </div>
+            <div class="col-xs-12 col-sm-8 col-md-9 col-lg-10">
+                {{template "navbar" .}}
+                {{template "content" .}}
+            </div>
         </div>
-        {{template "footer" .}}
 	</body>
 </html>
 {{end}}
@@ -18,7 +23,8 @@
     <link rel='stylesheet' href='/static/css/flexboxgrid.min.css'>
     <link rel='stylesheet' href='/static/css/main.css'>
     <link rel='stylesheet' href='/static/css/sidebar.css'>
-    <link rel='stylesheet' href='/static/css/{{ .Filename }}.css'>
+    <link rel='stylesheet' href='/static/css/navbar.css'>
+    <link rel='stylesheet' href='/static/css/{{.Filename}}.css'>
     <link
         href='https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i'
         rel='stylesheet'
@@ -29,6 +35,111 @@
 </head>
 {{end}}
 
-{{define "footer"}}
-<div class='footer'>footer</div>
+{{define "sidebar"}}
+<!--sidebar start-->
+<div class="csb no select">
+    <!--top start-->
+    <div class="title topbar csg white">
+        <div class="title-logo"><img src="/static/images/logo/logo.svg" alt="BrainTrain" width="35"></div>
+        <div class="title-start">Brain</div>
+        <div class="title-end">Train</div>
+    </div>
+    <!--top end-->
+
+    <!--items start-->
+    <div class="sidebar-items">
+        
+        <!--item start-->
+        <a href="/" class="sidebar-link">
+            <div class="sidebar-item">
+                <div class="sb-logo">
+                    <img src="/static/images/icons/home.svg" alt="BrainTrain" width="20">
+                </div>
+
+                <div class="sb-label">
+                    Home
+                </div>       
+            </div>
+        </a>
+        <!--item end-->
+
+        <!--item start-->
+        <a href="/public-registers" class="sidebar-link">
+            <div class="sidebar-item">
+                <div class="sb-logo">
+                    <img src="/static/images/icons/karteikasten.svg" alt="BrainTrain" width="20">
+                </div>
+
+                <div class="sb-label">
+                    Karteikästen
+                </div>
+
+                {{if .NewPublicRegisters}}
+                <div class="sb-badge cpg">
+                    <div class="sb-badge-label">{{.NewPublicRegisters}}</div>
+                </div>
+                {{end}}
+            </div>
+        </a>
+        <!--item end-->
+        
+        {{if .LoggedIn}}
+        <!--item start-->
+        <a href="/private-registers" class="sidebar-link">
+            <div class="sidebar-item">
+                <div class="sb-logo">
+                    <img src="/static/images/icons/meine-karteien.svg" alt="BrainTrain" width="20">
+                </div>
+
+                <div class="sb-label">
+                    Meine Karteikästen
+                </div>
+
+                {{if .NewPrivateRegisters}}
+                <div class="sb-badge cpg">
+                    <div class="sb-badge-label">{{.NewPrivateRegisters}}</div>
+                </div>
+                {{end}}
+            </div>
+        </a>
+        <!--item end-->
+
+        <!--item start-->
+        <a href="/profile" class="sidebar-link">
+            <div class="sidebar-item">
+                <div class="sb-logo">
+                    <img src="/static/images/icons/mein-profil.svg" alt="BrainTrain" width="20">
+                </div>
+
+                <div class="sb-label">
+                    Mein Profil
+                </div>
+            </div>
+        </a>
+        <!--item end-->
+        {{end}}
+    </div>
+    <!--items end-->
+</div>
+<!--sidebar end-->
+{{end}}
+
+{{define "navbar"}}
+    <div id="navbar" class="cpg topbar">
+        {{if .LoggedIn}}
+        <a href="/new-register" class="button cpy">Neue Kartei</a>
+        <div style="margin-right: 20px;">
+            <div><b>{{.Username}}</b></div>
+            <a href="/" class="white" style="text-align: right; font-size: 13px;">Logout</a>
+        </div>
+        <div class="profile-image-wrapper">
+            <img src="/static/images/icons/mein-profil.svg" width="40px">
+        </div>
+        {{else}}
+        <input class="navbar-input cpg white" type="text" placeholder="Nutzername">
+        <input class="navbar-input cpg white" type="password" placeholder="Passwort">
+        <a class="button cpy">Login</button>
+        <a href="/signup" class="white small">Registrieren</a>
+        {{end}}
+    </div>
 {{end}}

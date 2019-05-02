@@ -1,0 +1,30 @@
+#navbar {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 15px;
+}
+
+.navbar-input {
+    margin-right: 15px;
+    border-color: white;
+    border-width: 3px;
+    border-style: solid;
+    border-radius: 3px;
+}
+
+::placeholder {
+    color: white;
+    opacity: 1;
+    font-style: italic;
+    margin-left: 25px;
+}
+
+.profile-dummy {
+    height: 40px;
+    width: 40px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    margin-top: 5px;
+}
