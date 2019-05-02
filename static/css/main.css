@@ -164,4 +164,5 @@ button {
 	width: auto;
 	text-align: center;
 	text-decoration: none;
+	cursor: pointer;
 }
