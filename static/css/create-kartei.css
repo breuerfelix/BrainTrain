@@ -134,6 +134,14 @@
     border-style: solid;
 }
 
+.input-and-label select {
+    padding: 4px 180px 4px 5px;
+    border-radius: 0;
+    border-color: #d3d3d3;
+    border-style: solid;
+    width: 362px;
+}
+
 .warning-box {
     position: absolute;
     left: 770px;
