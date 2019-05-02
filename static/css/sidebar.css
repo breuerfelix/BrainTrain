@@ -1,16 +1,11 @@
 #sidebar {
-    max-width: var(--sidebar-width, 225px);
-    min-width: var(--sidebar-width, 225px);
+    min-height: 100vh;
 }
 
-@media only screen and (max-width: 650px) {
+@media only screen and (max-width: 766px) {
     #sidebar {
-        display: none;
+        min-height: auto;
     }
-}
-
-#sidebar.active {
-    display: block;
 }
 
 .title {
@@ -38,6 +33,7 @@
 
 .sidebar-link {
     color: var(--font-color);
+    text-decoration: none;
 }
 
 .sidebar-item {

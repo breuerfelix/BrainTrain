@@ -1,0 +1,68 @@
+{{define "content"}}
+    <!--content-main start-->
+    <div id="content-main">
+        
+        <h1 class="content-heading text-big content-left-align">Registrieren</h1>
+
+        <!--content-block start-->
+        <div class="white-bg content-block">
+
+            <!--info text start-->
+            <p class="content-text-signup">Wir freuen uns, dass du dich bei BrainTrain anmelden möchtest. Bitte beachte, dass <b>pro E-Mail Adresse nur ein Nutzer</b> erstellt werden kann und jeder <b>Nutzername nur einmal vergeben</b> wird.</p>
+            <!--info text end-->
+
+            <!--signup start-->
+            <div class="signup-wrapper">
+                <div class="signup">
+                    <!--form start-->
+                    <div class="input-and-label">
+                        <label for="name">
+                            Nutzername
+                        </label>
+                        <input type="text" id="name" placeholder="maxmusterman">
+                    </div>
+
+                    <div class="input-and-label">
+                        <label for="email">
+                            E-Mail
+                        </label>
+                        <input type="text" id="email" placeholder="muster@example.com">
+                    </div>
+
+                    <div>&nbsp;</div>
+
+                    <div class="input-and-label">
+                        <label for="password">
+                            Passwort
+                        </label>
+                        <input type="password" id="password">
+                    </div>
+
+                    <div class="input-and-label">
+                        <label for="password-again">
+                            Passwort wiederholen
+                        </label>
+                        <input type="text" id="password-again">
+                    </div>
+                    <!--form end-->
+
+                    <!--agreement start-->
+                    <div class="input-and-label content-agreement">
+                        <input type="checkbox"></input>
+                        <label class="content-text-signup">Ich habe die nicht vorhandene Dateschutzerklärung zur Kenntnis genommen.</label>
+                    </div>
+                    <!--agreement end-->
+
+                    <div id="button-register">
+                        <a class="button cpy">Registrieren</a>
+                    </div>
+
+                </div>
+            </div>
+            <!--signup end-->
+        </div>
+        <!--content-block end-->
+            
+    </div>
+    <!--content-main end-->
+{{end}}
