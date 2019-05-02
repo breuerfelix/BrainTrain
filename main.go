@@ -3,7 +3,7 @@ package main
 import (
 	"net/http"
 
-	"github.com/breuerfelix/card-learning-web/app/routes"
+	"github.com/breuerfelix/BrainTrain/app/routes"
 )
 
 func main() {

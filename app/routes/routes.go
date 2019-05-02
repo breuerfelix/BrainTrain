@@ -3,11 +3,12 @@ package routes
 import (
 	"net/http"
 
-	"github.com/breuerfelix/card-learning-web/app/controller"
+	"github.com/breuerfelix/BrainTrain/app/controller"
 )
 
+// Init function
 func Init() {
-	http.HandleFunc("/", controller.Index)
+	http.HandleFunc("/", controller.HandleWithContext(controller.Register))
 
 	fs := http.FileServer(http.Dir("static/"))
 	http.Handle("/static/", http.StripPrefix("/static/", fs))
