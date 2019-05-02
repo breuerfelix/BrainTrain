@@ -42,14 +42,14 @@
 
 .cat-title {
     font-size: 20px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 .cat-content {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .cat-card {
