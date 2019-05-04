@@ -1,0 +1,55 @@
+.content-title, .content-subtitle {
+    color: black;
+    font-weight: 500;
+    font-size: 100%;
+    margin: 10px 50px;
+}
+
+.content-subtitle {
+    font-weight: normal;
+    margin-bottom: 30px;
+}
+
+.text-big {
+    font-size: 200%;
+}
+
+.box-title {
+    color: black;
+    font-size: 27px;
+    font-weight: 500;
+    margin: 10px 0;
+}
+
+.col-label, .col-input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 7px 0 !important;
+}
+
+.col-label {
+    justify-content: flex-end;
+}
+
+.col-label > * {
+    padding-right: 20px;
+}
+
+.col-input {
+    justify-content: flex-start;
+}
+
+.col-input > input[type=text], .col-input > textarea, .col-input > select {
+    width: 100%;
+    margin-right: 30px !important;
+}
+
+.col-input > input[type=radio], .col-input > label {
+    margin-right: 10px !important;
+}
+
+.col-button {
+    margin-top: 20px !important;
+    margin-bottom: 10px !important;
+}

@@ -1,0 +1,72 @@
+{{define "content"}}
+<!--content-main start-->
+<div class="row">
+    <div class="col">
+        <h1 class="content-title text-big">Karteikasten erstellen / Karteikasten bearbeiten</h1>
+        <div class="content-subtitle">Hier kannst du eine neue Kartei erstellen oder eine vorhandene nach Bedarf bearbeiten.</div>
+    </div>
+</div>
+    <!--content-block start-->
+<div class="row center-xs">
+
+    <div class="box white-bg col-xs-12 col-sm-11 col-md-10 col-lg-7">
+        <div class="box-title text-big">Allgemeine Daten</div>
+
+        <form>
+            <div class="row">
+                <div class="col-label col-xs-4">
+                    <label for="name">Titel</label>
+                </div>
+                <div class="col-input col-xs-8">
+                    <input type="text" id="name">
+                </div>
+
+                <div class="col-label col-xs-4">
+                    <label>Kategorie</label>
+                </div>
+                <div class="col-input col-xs-8">
+                    <div class="select">
+                        <select name="sort">
+                            <option value="0"></option>
+                            <optgroup label="Naturwissenschaften">
+                                <option value="nature0">Biologie</option>
+                                <option value="nature1">Chemie</option>
+                                <option value="nature2">Chemie</option>
+                                <option value="nature2">Elektrotechnik</option>
+                            </optgroup>
+                            <option value="1">Naturwissenschaften</option>
+                            <option value="2">Sprachen</option>
+                            <option value="3">Gesellschaft</option>
+                            <option value="4">Wirtschaft</option>
+                            <option value="5">Geisteswissenschaften</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-label col-xs-4">
+                    <label for="description">Beschreibung</label>
+                </div>
+                <div class="col-input col-xs-8">
+                    <textarea type="text" id="description" rows="6"></textarea>
+                </div>
+
+                <div class="col-label col-xs-4">
+                    <label>Sichtbarkeit</label>
+                </div>
+                <div class="col-input col-xs-8">
+                    <input type="radio">
+                    <label>öffentlich</label>
+                    <input type="radio">
+                    <label>privat</label>
+                </div>
+
+                <div class="col-xs-12 col-button">
+                    <a href="/edit-card" class="button">Speichern und weiter</a>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+<!--content-main end-->
+{{end}}
