@@ -23,3 +23,8 @@ func PrivateRegisters(r *http.Request, data *pageData) {
 func Signup(r *http.Request, data *pageData) {
 	data.Filename = "signup"
 }
+
+// NewRegister controller
+func NewRegister(r *http.Request, data *pageData) {
+	data.Filename = "new-register"
+}

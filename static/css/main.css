@@ -43,9 +43,13 @@ a {
 	margin: 0;
 }
 
-input, select {
+input, select, textarea {
 	min-height: 30px;
 	font-size: 15px;
+	border-color: lightgray;
+	border-style: solid;
+	border-width: 2px;
+	border-radius: 0;
 }
 
 button {
@@ -155,6 +159,7 @@ button {
 .button {
 	padding: 5px 10px;
 	margin: 5px 10px;
+	background-color: var(--primary-yellow);
 	border: 0 solid var(--secondary-yellow);
 	border-width: 0 0 2px 0;
 	border-radius: 0;
@@ -175,4 +180,15 @@ button {
 .success-button {
 	background-color: var(--primary-green);
 	border-color: var(--secondary-green);
+}
+
+.box {
+	background-color: white;
+	border-style: solid;
+	border-width: 5px 0 0 0;
+	border-color: var(--primary-green);
+}
+
+form label {
+	color: black;
 }
