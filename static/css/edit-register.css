@@ -1,0 +1,59 @@
+.overview .col-xs {
+    margin: 10px;
+}
+.ov-title {
+    margin-bottom: 5px;
+    font-size: 13px;
+}
+
+.ov-subtitle {
+    font-weight: bold;
+}
+
+.col-label, .col-input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 7px 0 !important;
+}
+
+.col-label {
+    justify-content: flex-end;
+}
+
+.col-label > * {
+    padding-right: 20px;
+}
+
+.col-input {
+    justify-content: flex-start;
+}
+
+.col-input > input[type=text], .col-input > textarea, .col-input > select {
+    width: 100%;
+    margin-right: 30px !important;
+}
+
+.col-button {
+    height: 60px;
+}
+
+.cards .box {
+    margin-bottom: 15px;
+    padding: 10px;
+}
+
+.card-pos {
+    font-size: 90%;
+
+}
+
+.card-title {
+    font-weight: bold;
+    margin: 5px 0;
+    margin-bottom: 15px;
+}
+
+.card-btn {
+    margin-bottom: 10px;
+}

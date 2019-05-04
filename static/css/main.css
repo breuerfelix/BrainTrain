@@ -187,8 +187,52 @@ button {
 	border-style: solid;
 	border-width: 5px 0 0 0;
 	border-color: var(--primary-green);
+	color: black;
 }
 
 form label {
 	color: black;
+}
+
+.content-header {
+	color: black;
+	margin: 20px 40px;
+}
+
+.content-title {
+	font-weight: 500;
+	font-size: 30px;
+	margin-bottom: 10px;
+}
+
+.content-subtitle {
+	font-size: 17px;
+	font-weight: normal;
+	margin-bottom: 20px;
+}
+
+.center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.hexagon-cards-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.hexagon-cards p {
+    font-weight: 600;
+    margin: -3px;
+    padding: 0;
+    z-index: 1;
+}
+
+.super-small-text {
+    font-weight: 400 !important;
+    font-size: 60%;
 }

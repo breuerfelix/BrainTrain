@@ -13,6 +13,7 @@ func Init() {
 	http.HandleFunc("/private-registers", controller.HandleWithContext(controller.PrivateRegisters))
 	http.HandleFunc("/signup", controller.HandleWithContext(controller.Signup))
 	http.HandleFunc("/new-register", controller.HandleWithContext(controller.NewRegister))
+	http.HandleFunc("/edit-register", controller.HandleWithContext(controller.EditRegister))
 
 	fs := http.FileServer(http.Dir("static/"))
 	http.Handle("/static/", http.StripPrefix("/static/", fs))
