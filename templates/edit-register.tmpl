@@ -1,0 +1,90 @@
+{{define "content"}}
+<div class="content-header">
+    <div class="content-title">Karteikasten erstellen / Karteikasten bearbeiten</div>
+    <div class="content-subtitle">
+        Hier kannst du eine neue Kartei erstellen oder eine vorhandene nach Bedarf bearbeiten.
+    </div>
+</div>
+
+<div class="row" style="margin: 0 35px;">
+    <div class="box col-xs-12" style="margin-bottom: 20px;">
+        <div class="row overview">
+            <div class="col-xs">
+                <div class="ov-title">
+                    Name
+                </div>
+                <div class="ov-subtitle">
+                    Geometrie
+                </div>
+            </div>
+            <div class="col-xs">
+                <div class="ov-title">
+                    Kategorie
+                </div>
+                <div class="ov-subtitle">
+                    Naturwissenschaften > Mathematik
+                </div>
+            </div>
+            <div class="col-xs">
+                <div class="ov-title">
+                    Fortschritt
+                </div>
+                <div class="ov-subtitle">
+                    0 %
+                </div>
+            </div>
+            <div class="col-xs center">
+                <a href="#" class="button success-button">Bearbeiten</a>
+            </div>
+            <div class="col-xs center">
+                <div class="hexagon hexagon-cards hexagon-cards-text">
+                    <p>23</p>
+                    <p class="super-small-text">Karten</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-md-4 col-lg-3 cards">
+        <div class="box">
+            <div class="card-pos"># 1</div>
+            <div class="card-title">Titel der Karte</div>
+            <a href="#" class="button success-button card-btn">Bearbeiten</a>
+            <a href="#" class="button danger-button card-btn">
+                <img src="/static/images/icons/delete.svg" width="17px">
+            </a>
+        </div>
+        <div class="box">bla</div>
+        <div class="box">bla</div>
+    </div>
+
+    <div class="col-xs-12 col-md-1 col-lg-1"></div>
+
+    <div class="box col-xs-12 col-md-7 col-lg-8">
+        <div class="row">
+            <div class="col-label col-xs-3">
+                <label>Titel</label>
+            </div>
+            <div class="col-input col-xs-9">
+                <input type="text">
+            </div>
+            <div class="col-label col-xs-3">
+                <label>Frage</label>
+            </div>
+            <div class="col-input col-xs-9">
+                <textarea type="text" rows="6"></textarea>
+            </div>
+            <div class="col-label col-xs-3">
+                <label>Antwort</label>
+            </div>
+            <div class="col-input col-xs-9">
+                <textarea type="text" rows="6"></textarea>
+            </div>
+            <div class="col-xs-12 col-button center">
+                <a href="#" class="button">Speichern</a>
+                <a href="#" class="button danger-button">Abbrechen</a>
+            </div>
+        </div>
+    </div>
+</div>
+{{end}}

@@ -28,3 +28,8 @@ func Signup(r *http.Request, data *pageData) {
 func NewRegister(r *http.Request, data *pageData) {
 	data.Filename = "new-register"
 }
+
+// EditRegister controller
+func EditRegister(r *http.Request, data *pageData) {
+	data.Filename = "edit-register"
+}
