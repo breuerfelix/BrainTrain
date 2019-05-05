@@ -1,0 +1,131 @@
+{{define "content"}}
+<div class="content-header">
+    <div class="content-title">Lernen</div>
+    <div class="content-subtitle">
+        Hier wird dir zufällig eine Karte aus der gewählten Kartei angezeigt.
+    </div>
+</div>
+
+<div class="row" style="margin: 0 35px;">
+    <div class="box col-xs-12" style="margin-bottom: 20px;">
+        <div class="row overview">
+            <div class="col-xs">
+                <div class="ov-title">
+                    Name
+                </div>
+                <div class="ov-subtitle">
+                    Geometrie
+                </div>
+            </div>
+            <div class="col-xs">
+                <div class="ov-title">
+                    Kategorie
+                </div>
+                <div class="ov-subtitle">
+                    Naturwissenschaften > Mathematik
+                </div>
+            </div>
+            <div class="col-xs">
+                <div class="ov-title">
+                    Fortschritt
+                </div>
+                <div class="ov-subtitle">
+                    0 %
+                </div>
+            </div>
+            <div class="col-xs">
+                <div class="ov-title cus-row">
+                    <div class="cus-col first">
+                        Wiederholung
+                    </div>
+                    <div class="cus-col">
+                        0
+                    </div>
+                    <div class="cus-col">
+                        1
+                    </div>
+                    <div class="cus-col">
+                        2
+                    </div>
+                    <div class="cus-col">
+                        3
+                    </div>
+                    <div class="cus-col">
+                        4
+                    </div>
+                </div>
+                <div class="ov-subtitle cus-row">
+                    <div class="cus-col first">Karten</div>
+                    <div class="cus-col">2</div>
+                    <div class="cus-col">6</div>
+                    <div class="cus-col">9</div>
+                    <div class="cus-col">0</div>
+                    <div class="cus-col">1</div>
+                </div>
+            </div>
+            <div class="col-xs center">
+                <div class="hexagon hexagon-cards hexagon-cards-text">
+                    <p>23</p>
+                    <p class="super-small-text">Karten</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-md-1 col-lg-2"></div>
+
+    <div class="col-xs-12 col-md-10 col-lg-8">
+        <div class="row box" style="padding-top: 15px; padding-bottom: 10px;">
+            <div class="col-label col-xs-3">
+                <label>Titel</label>
+            </div>
+            <div class="col-xs-4 center" style="justify-content: left; font-weight: bold;">
+                Titel der Karte
+            </div>
+            <div class="col-xs-5 center" style="justify-content: left;">
+                <div class="hexagon-small hexagon-counter hexagon-display-center green">
+                    <p>0</p>
+                </div>
+                <div class="hexagon-small hexagon-counter hexagon-display-center">
+                    <p>1</p>
+                </div>
+                <div class="hexagon-small hexagon-counter hexagon-display-center">
+                    <p>2</p>
+                </div>
+                <div class="hexagon-small hexagon-counter hexagon-display-center">
+                    <p>3</p>
+                </div>
+                <div class="hexagon-small hexagon-counter hexagon-display-center">
+                    <p>4</p>
+                </div>
+            </div>
+            <div class="col-label col-xs-3">
+                <label>Frage</label>
+            </div>
+            <div class="col-input col-xs-9">
+                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque consectetur consequuntur facere nostrum nihil earum exercitationem officia rem magni fuga vel, dignissimos, quo voluptas iste minus dolorem quae tenetur. Iure.</p>
+            </div>
+            <div class="col-label col-xs-3">
+                <label>Antwort</label>
+            </div>
+            <div class="col-input col-xs-9">
+            {{if .ShowAnswer}}
+                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque consectetur consequuntur facere nostrum nihil earum exercitationem officia rem magni fuga vel, dignissimos, quo voluptas iste minus dolorem quae tenetur. Iure.</p>
+            {{else}}
+                <a href="#" class="button big-button">Aufdecken</a>
+            {{end}}
+            </div>
+            <div class="col-xs-12 buttons center">
+            {{if .ShowAnswer}}
+                <a href="#" class="button success-button">Richtig</a>
+                <a href="#" class="button danger-button">Falsch</a>
+            {{else}}
+                <a href="#" class="button">Überspringen</a>
+            {{end}}
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-md-1 col-lg-2"></div>
+</div>
+{{end}}
