@@ -190,6 +190,11 @@ button {
 	color: black;
 }
 
+.box-active {
+	background-color: var(--secondary-green);
+	color: white;
+}
+
 form label {
 	color: black;
 }
