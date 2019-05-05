@@ -182,6 +182,12 @@ button {
 	border-color: var(--secondary-green);
 }
 
+.big-button {
+	height: 50px;
+	width: 200px;
+	padding-top: 15px;
+}
+
 .box {
 	background-color: white;
 	border-style: solid;

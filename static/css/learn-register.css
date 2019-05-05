@@ -1,0 +1,98 @@
+.overview .col-xs {
+    margin: 10px;
+}
+
+.ov-title {
+    margin-bottom: 5px;
+    font-size: 13px;
+}
+
+.ov-subtitle {
+    font-weight: bold;
+}
+
+.cus-row {
+  display: flex;
+}
+
+.cus-col.first {
+  width: 100px;
+}
+
+.cus-col {
+  width: 35px;
+}
+
+.col-label, .col-input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 7px 0 !important;
+}
+
+.col-label {
+    justify-content: flex-end;
+}
+
+.col-label > * {
+    padding-right: 20px;
+}
+
+.col-input {
+    justify-content: flex-start;
+}
+
+.hexagon-small {
+  position: relative;
+  width: 30px; 
+  height: 17.32px;
+  background-color: #434343;
+  margin: 8.66px 0;
+  display: inline-block;
+  margin: 0px 5px;
+}
+
+.hexagon-small:before,
+.hexagon-small:after {
+  content: "";
+  position: absolute;
+  width: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+}
+
+.hexagon-small:before {
+  bottom: 100%;
+  border-bottom: 8.66px solid #434343;
+}
+
+.hexagon-small:after {
+  top: 100%;
+  width: 0;
+  border-top: 8.66px solid #434343;
+}
+
+.hexagon-small > p {
+    position: relative;
+    top: -23px;
+    color: white;
+    font-weight: 600;
+    font-size: 20px;
+    padding-left: 10px;
+}
+
+.hexagon-small.green {
+  background-color: var(--primary-green);
+}
+
+.hexagon-small.green:before {
+  border-bottom: 8.66px solid var(--primary-green);
+}
+
+.hexagon-small.green:after {
+  border-top: 8.66px solid var(--primary-green);
+}
+
+.buttons .button {
+  width: 150px;
+}

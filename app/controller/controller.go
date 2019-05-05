@@ -38,3 +38,8 @@ func EditRegister(r *http.Request, data *pageData) {
 func ViewRegister(r *http.Request, data *pageData) {
 	data.Filename = "view-register"
 }
+
+// LearnRegister controller
+func LearnRegister(r *http.Request, data *pageData) {
+	data.Filename = "learn-register"
+}
