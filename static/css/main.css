@@ -161,7 +161,7 @@ button {
 	margin: 5px 10px;
 	background-color: var(--primary-yellow);
 	border: 0 solid var(--secondary-yellow);
-	border-width: 0 0 4px 0;
+	border-width: 0 0 3px 0;
 	border-radius: 0;
 	font-weight: 600;
 	color: white;
