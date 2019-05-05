@@ -26,6 +26,7 @@ type pageData struct {
 	LoggedIn            bool
 	NewPublicRegisters  int
 	NewPrivateRegisters int
+	ShowAnswer          bool
 	NumUsers            int
 	NumCardsTotal       int
 	NumRegistersTotal   int
@@ -43,6 +44,7 @@ func HandleWithContext(controllerFunc controllerFunction) func(http.ResponseWrit
 		data.LoggedIn = true
 		data.NewPublicRegisters = 20
 		data.NewPrivateRegisters = 0
+		data.ShowAnswer = true
 		data.NumUsers = 32
 		data.NumCardsTotal = 124
 		data.NumRegistersTotal = 22

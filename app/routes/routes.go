@@ -15,6 +15,7 @@ func Init() {
 	http.HandleFunc("/new-register", controller.HandleWithContext(controller.NewRegister))
 	http.HandleFunc("/edit-register", controller.HandleWithContext(controller.EditRegister))
 	http.HandleFunc("/view-register", controller.HandleWithContext(controller.ViewRegister))
+	http.HandleFunc("/learn-register", controller.HandleWithContext(controller.LearnRegister))
 	http.HandleFunc("/profile", controller.HandleWithContext(controller.Profile))
 
 	fs := http.FileServer(http.Dir("static/"))
