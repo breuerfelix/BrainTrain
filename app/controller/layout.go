@@ -13,6 +13,9 @@ type pageData struct {
 	Username            string
 	NewPublicRegisters  int
 	NewPrivateRegisters int
+	NumUsers            int
+	NumCards            int
+	NumRegisters        int
 }
 
 type controllerFunction func(*http.Request, *pageData)
@@ -27,6 +30,9 @@ func HandleWithContext(controllerFunc controllerFunction) func(http.ResponseWrit
 		data.Username = "Max Mustermann"
 		data.NewPublicRegisters = 20
 		data.NewPrivateRegisters = 0
+		data.NumUsers = 32
+		data.NumCards = 124
+		data.NumRegisters = 22
 
 		controllerFunc(r, &data)
 
