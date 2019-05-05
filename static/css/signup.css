@@ -6,10 +6,6 @@
     flex-direction: column;
 }
 
-#content-block {
-    width: 100%;
-}
-
 .content-text-signup {
     color: black;
     margin: 10px;
