@@ -1,0 +1,35 @@
+#content-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 5%;
+    flex-direction: column;
+}
+
+.content-block {
+    border: 0 solid var(--primary-green);
+    border-width: 4px 0 0 0;
+    border-radius: 0;
+    padding-top: 10px;
+    color: black;
+    background-color: white;
+    margin-bottom: 35px;
+}
+
+.content-heading {
+    color: black;
+    text-align: center;
+    font-weight: 500;
+    font-size: 400%;
+    margin: 10px 0;
+}
+
+.content-text-welcome {
+    color: black;
+    margin: 5% 10%;
+    font-weight: 400;
+}
+
+.text-big {
+    font-size: 200%;
+}

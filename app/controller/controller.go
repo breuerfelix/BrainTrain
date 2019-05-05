@@ -42,4 +42,8 @@ func ViewRegister(r *http.Request, data *pageData) {
 // LearnRegister controller
 func LearnRegister(r *http.Request, data *pageData) {
 	data.Filename = "learn-register"
+
+// Profile controller
+func Profile(r *http.Request, data *pageData) {
+	data.Filename = "profile"
 }

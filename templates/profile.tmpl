@@ -1,0 +1,98 @@
+{{define "content"}}
+<div id="content-main">
+            
+    <!--content title start-->
+    <div class="content-title-block">
+        <h1>Mein Profil</h1>
+        <p>Hier kannst du deine Profildaten aktualisieren oder ändern.</p>
+    </div>
+    <!--content title end-->
+
+    <div class="content-profile-wrapper">
+        <div class="content-profile-left">
+            <div class="content-block">
+                <div class="profile-details-wrapper">
+                    <div class="profile-image-wrapper">
+                        <span class="profile-dummy"></span>
+                    </div>
+                    
+                    <div class="edit-button">
+                        <a href="#" class="button cpy">Edit</a>
+                    </div>
+                    <p class="name">Max Mustermann</p>
+                    <p class="email">mustermann@example.com</p>
+                </div>
+            </div>
+            <div class="content-block">
+                <div class="stats-wrapper">
+                    <div class="stats-title">
+                        <p>Statistik</p>
+                    </div>
+                    <div class="stats-value-wrapper">
+                        <div class="content-row">
+                            <div class="row-name">Erstellte Karten:</div>
+                            <div class="row-value">{{.NumCards}}</div>
+                        </div>
+                        <div class="content-row">
+                            <div class="row-name">Erstellte Karteien:</div>
+                            <div class="row-value">{{.NumRegisters}}</div>
+                        </div>
+                        <div class="content-row">
+                            <div class="row-name">Mitglied seit:</div>
+                            <div class="row-value">{{.MemberSince}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-profile-right">
+            <div class="content-block">
+                <div class="profile-form-wrapper">
+                    <div class="form-title">
+                        <p>Update der Profildaten</p>
+                    </div>
+
+                    <!--form start-->
+                    <div class="form">
+                        <div class="content-row">
+                            <div class="row-name">Neue Email:</div>
+                            <div class="row-value">
+                                <input type="text">
+                            </div>
+                        </div>
+                        <div class="content-row">
+                            <div class="row-name">Altes Passwort:</div>
+                            <div class="row-value">
+                                <input type="text">
+                            </div>
+                        </div>
+                        <div class="content-row">
+                            <div class="row-name">Neues Passwort:</div>
+                            <div class="row-value">
+                                <input type="text">
+                            </div>
+                        </div>
+                        <div class="content-row">
+                            <div class="row-name">Passwort wiederholen:</div>
+                            <div class="row-value">
+                                <input type="text">
+                            </div>
+                        </div>
+                    </div>
+                    <!--form end-->
+
+                    <div class="button-wrapper">
+                        <a href="#" class="button">Speichern</a>
+                        <a href="/delete-profil.html" class="button danger-button">
+                            <img src="/static/images/icons/delete.svg" width="20px">
+                        </a>
+                    </div>
+                    
+
+                </div>
+            </div>
+        </div>
+    </div>
+        
+</div>
+{{end}}
