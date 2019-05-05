@@ -7,15 +7,23 @@ import (
 	"net/http"
 )
 
+// User struct
+type User struct {
+	NumCards     int
+	NumRegisters int
+	MemberSince  string
+	Username     string
+}
+
 type pageData struct {
 	Filename            string
 	LoggedIn            bool
-	Username            string
 	NewPublicRegisters  int
 	NewPrivateRegisters int
 	NumUsers            int
-	NumCards            int
-	NumRegisters        int
+	NumCardsTotal       int
+	NumRegistersTotal   int
+	User
 }
 
 type controllerFunction func(*http.Request, *pageData)
@@ -27,12 +35,17 @@ func HandleWithContext(controllerFunc controllerFunction) func(http.ResponseWrit
 
 		// fake data
 		data.LoggedIn = true
-		data.Username = "Max Mustermann"
 		data.NewPublicRegisters = 20
 		data.NewPrivateRegisters = 0
 		data.NumUsers = 32
-		data.NumCards = 124
-		data.NumRegisters = 22
+		data.NumCardsTotal = 124
+		data.NumRegistersTotal = 22
+
+		// fake user data
+		data.User.Username = "Max Mustermann"
+		data.User.MemberSince = "24.12.2018"
+		data.User.NumCards = 24
+		data.User.NumRegisters = 7
 
 		controllerFunc(r, &data)
 

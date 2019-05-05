@@ -1,10 +1,8 @@
 {{define "content"}}
-
-    <div id="content-main" class="cp">  
-        <div class="content-block white-bg">
-            <h1 class="content-heading">Willkommen bei <span class="content-green">BrainTrain</span></h1>
-            <p class="content-text-welcome text-big">Hier haben sich <b>{{.NumUsers}} Nutzer</b> angemeldet und zusammen <b>{{.NumCards}} Lernkarten</b> in <b>{{.NumRegisters}} Karteien</b> erstellt.</p> 
-        </div>
+<div id="content-main" class="cp">  
+    <div class="content-block white-bg">
+        <h1 class="content-heading">Willkommen bei <span class="content-green">BrainTrain</span></h1>
+        <p class="content-text-welcome text-big">Hier haben sich <b>{{.NumUsers}} Nutzer</b> angemeldet und zusammen <b>{{.NumCardsTotal}} Lernkarten</b> in <b>{{.NumRegistersTotal}} Karteien</b> erstellt.</p> 
     </div>
-
+</div>
 {{end}}

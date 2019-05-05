@@ -38,3 +38,8 @@ func EditRegister(r *http.Request, data *pageData) {
 func ViewRegister(r *http.Request, data *pageData) {
 	data.Filename = "view-register"
 }
+
+// Profile controller
+func Profile(r *http.Request, data *pageData) {
+	data.Filename = "profile"
+}
