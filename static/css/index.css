@@ -33,3 +33,7 @@
 .text-big {
     font-size: 200%;
 }
+
+.content-green {
+    color: var(--primary-green);
+}
