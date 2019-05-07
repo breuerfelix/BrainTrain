@@ -44,7 +44,7 @@ func HandleWithContext(controllerFunc controllerFunction) func(http.ResponseWrit
 		data.LoggedIn = true
 		data.NewPublicRegisters = 20
 		data.NewPrivateRegisters = 0
-		data.ShowAnswer = true
+		data.ShowAnswer = false
 		data.NumUsers = 32
 		data.NumCardsTotal = 124
 		data.NumRegistersTotal = 22
