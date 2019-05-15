@@ -1,50 +1,153 @@
 package controller
 
 import (
+	"fmt"
+	"html/template"
+	"log"
 	"net/http"
 )
 
-// Index controller
-func Index(r *http.Request, data *pageData) {
-	data.Filename = "index"
+// Categorie struct
+type Categorie struct {
+	Name          string
+	SubCategories []string
 }
 
-// PublicRegisters controller
-func PublicRegisters(r *http.Request, data *pageData) {
-	data.Filename = "public-registers"
+// User struct
+type User struct {
+	NumCards     int
+	NumRegisters int
+	MemberSince  string
+	Username     string
 }
 
-// PrivateRegisters controller
-func PrivateRegisters(r *http.Request, data *pageData) {
-	data.Filename = "private-registers"
+// GeneralData struct
+type GeneralData struct {
+	User
+	Filename            string
+	LoggedIn            bool
+	NewPublicRegisters  int
+	NewPrivateRegisters int
+	ShowAnswer          bool
+	NumUsers            int
+	NumCardsTotal       int
+	NumRegistersTotal   int
+	Categories          []Categorie
 }
 
-// Signup controller
-func Signup(r *http.Request, data *pageData) {
-	data.Filename = "signup"
+// PageData for templates
+type PageData map[string]interface{}
+
+type controllerFunction func(*http.Request, *GeneralData, *PageData)
+
+// HandleWithContext func
+func HandleWithContext(controllerFunc controllerFunction) func(http.ResponseWriter, *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
+		data := GeneralData{}
+		pageData := PageData{
+			"general": &data,
+		}
+
+		initGeneralData(&data)
+		controllerFunc(r, &data, &pageData)
+
+		tmpl, err := template.ParseFiles("templates/layout.tmpl", fmt.Sprintf("templates/%s.tmpl", data.Filename))
+
+		if err != nil {
+			log.Println(err)
+		}
+
+		tmpl.ExecuteTemplate(w, "layout", pageData)
+	}
 }
 
-// NewRegister controller
-func NewRegister(r *http.Request, data *pageData) {
-	data.Filename = "new-register"
-}
+func initGeneralData(data *GeneralData) {
+	// fake data
+	data.LoggedIn = true
+	data.NewPublicRegisters = 20
+	data.NewPrivateRegisters = 0
+	data.ShowAnswer = false
+	data.NumUsers = 32
+	data.NumCardsTotal = 124
+	data.NumRegistersTotal = 22
 
-// EditRegister controller
-func EditRegister(r *http.Request, data *pageData) {
-	data.Filename = "edit-register"
-}
+	// fake user data
+	data.User.Username = "Max Mustermann"
+	data.User.MemberSince = "24.12.2018"
+	data.User.NumCards = 24
+	data.User.NumRegisters = 7
 
-// ViewRegister controller
-func ViewRegister(r *http.Request, data *pageData) {
-	data.Filename = "view-register"
-}
+	// init categories
+	nature := Categorie{}
+	nature.Name = "Naturwissenschaften"
+	nature.SubCategories = []string{
+		"Biologie",
+		"Chemie",
+		"Elektrotechnik",
+		"Informatik",
+		"Mathematik",
+		"Medizin",
+		"Naturkunde",
+		"Physik",
+		"Sonstiges",
+	}
 
-// LearnRegister controller
-func LearnRegister(r *http.Request, data *pageData) {
-	data.Filename = "learn-register"
-}
+	languages := Categorie{}
+	languages.Name = "Sprachen"
+	languages.SubCategories = []string{
+		"Chinesisch",
+		"Deutsch",
+		"Englisch",
+		"Fransösisch",
+		"Griechisch",
+		"Italienisch",
+		"Latein",
+		"Russisch",
+		"Sonstiges",
+	}
 
-// Profile controller
-func Profile(r *http.Request, data *pageData) {
-	data.Filename = "profile"
+	society := Categorie{}
+	society.Name = "Gesellschaft"
+	society.SubCategories = []string{
+		"Ethik",
+		"Geschichte",
+		"Literatur",
+		"Musik",
+		"Politik",
+		"Recht",
+		"Soziales",
+		"Sport",
+		"Verkehrskunde",
+		"Sonstiges",
+	}
+
+	economy := Categorie{}
+	economy.Name = "Wirtschaft"
+	economy.SubCategories = []string{
+		"BWL",
+		"Finanzen",
+		"Landwirtschaft",
+		"Marketing",
+		"VWL",
+		"Sonstiges",
+	}
+
+	mindstuff := Categorie{}
+	mindstuff.Name = "Geisteswissenschaften"
+	mindstuff.SubCategories = []string{
+		"Kriminalogie",
+		"Philosophie",
+		"Psychologie",
+		"Pädagogik",
+		"Theologie",
+		"Sonstiges",
+	}
+
+	data.Categories = []Categorie{
+		nature,
+		languages,
+		society,
+		economy,
+		mindstuff,
+	}
 }
