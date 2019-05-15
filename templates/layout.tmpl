@@ -1,14 +1,14 @@
 {{define "layout"}}
 <html>
-	{{template "header" .}}
+	{{template "header" .general}}
 	<body>
         <div class="row cp">
             <div id="sidebar" class="col-xs-12 col-sm-4 col-md-3 col-lg-2 csb">
-                {{template "sidebar" .}}
+                {{template "sidebar" .general}}
             </div>
             <div class="col-xs-12 col-sm-8 col-md-9 col-lg-10">
-                {{template "navbar" .}}
-                {{template "content" .}}
+                {{template "navbar" .general}}
+                {{template "content" .general}}
             </div>
         </div>
 	</body>
