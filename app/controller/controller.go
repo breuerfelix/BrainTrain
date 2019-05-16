@@ -29,9 +29,6 @@ type GeneralData struct {
 	NewPublicRegisters  int
 	NewPrivateRegisters int
 	ShowAnswer          bool
-	NumUsers            int
-	NumCardsTotal       int
-	NumRegistersTotal   int
 	Categories          []Categorie
 }
 
@@ -62,14 +59,14 @@ func HandleWithContext(controllerFunc controllerFunction) func(http.ResponseWrit
 }
 
 func initGeneralData(data *GeneralData) {
+	// types
+	// user, card, register
+
 	// fake data
 	data.LoggedIn = true
 	data.NewPublicRegisters = 20
 	data.NewPrivateRegisters = 0
 	data.ShowAnswer = false
-	data.NumUsers = 32
-	data.NumCardsTotal = 124
-	data.NumRegistersTotal = 22
 
 	// fake user data
 	data.User.Username = "Max Mustermann"
