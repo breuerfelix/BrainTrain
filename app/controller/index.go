@@ -25,6 +25,7 @@ type userResp struct {
 func Index(r *http.Request, data *GeneralData, pageData *PageData) {
 	data.Filename = "index"
 
+	// just a test to see how the abstraktion works
 	user := &models.User{}
 	user.Type = "user"
 	bla, _ := user.GetAll()
