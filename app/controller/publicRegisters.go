@@ -26,15 +26,23 @@ func PublicRegisters(r *http.Request, data *GeneralData, pageData *PageData) {
 		panic(err)
 	}
 
-	// TODO make list from categorie class and filter out not used ones
-	categories := [...]string{
-		"Naturwissenschaften",
-		"Sprachen",
-		"Gesellschaft",
-		"Wirtschaft",
-		"Geisteswissenschaften",
+	// filter out categories which are not used
+	categories := make([]string, 0)
+	for _, cat := range data.Categories {
+		found := false
+		for _, reg := range allEntities {
+			if reg["category"] == cat.Name {
+				found = true
+				break
+			}
+		}
+
+		if found {
+			categories = append(categories, cat.Name)
+		}
 	}
 
+	// append number of cards for each register
 	for _, register := range allEntities {
 		allCards, _ := models.DB.QueryJSON(fmt.Sprintf(`{
 			"selector": {
@@ -50,6 +58,7 @@ func PublicRegisters(r *http.Request, data *GeneralData, pageData *PageData) {
 		register["amountCards"] = len(allCards)
 	}
 
+	// append to template data
 	(*pageData)["registers"] = &allEntities
 	(*pageData)["categories"] = &categories
 }
