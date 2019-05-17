@@ -26,161 +26,44 @@
 </div>
 <!--content-header end-->
 
+{{ $categories := .categories }}
+{{ $registers := .registers }}
+
 <div class="categories">
-    <!--category start-->
+    {{range $category := $categories}}
     <div class="cat-title">
-        Naturwissenschaften
+        {{$category}}
     </div>
 
     <div class="cat-content">
+        {{range $register := $registers}}
+        {{if eq $register.category $category}}
         <div class="cat-card">
-            <div class="cc-title">Mathematik</div>
+            <div class="cc-title">{{$register.category}}</div>
             <div class="cc-content">
                 <div class="ccc-header">
-                    <div class="ccc-title">Geometrische Formen und Körper</div>
+                    <div class="ccc-title">{{$register.title}}</div>
                     <div class="ccc-badge">
                         <div class="card-counter">
                             <div class="hexagon hexagon-counter hexagon-display-center">
-                                <p>23</p>
+                                <p>{{$register.amountCards}}</p>
                                 <p class="super-small-text">Karten</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="ccc-content">
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor....
+                    {{$register.description}}
                 </div>
                 <div class="ccc-footer">
                     <a href="/learn-register" class="button cpy content-button">Lernen</a>
                 </div>
             </div>
         </div>
-
-        <div class="cat-card">
-            <div class="cc-title">Chemie</div>
-            <div class="cc-content">
-                <div class="ccc-header">
-                    <div class="ccc-title">Vokabeln lernen</div>
-                    <div class="ccc-badge">
-                        <div class="card-counter">
-                            <div class="hexagon hexagon-counter hexagon-display-center">
-                                <p>23</p>
-                                <p class="super-small-text">Karten</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="ccc-content">
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor....
-                </div>
-                <div class="ccc-footer">
-                    <a class="button cpy content-button">Lernen</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="cat-card">
-            <div class="cc-title">Physik</div>
-            <div class="cc-content">
-                <div class="ccc-header">
-                    <div class="ccc-title">Atome</div>
-                    <div class="ccc-badge">
-                        <div class="card-counter">
-                            <div class="hexagon hexagon-counter hexagon-display-center">
-                                <p>23</p>
-                                <p class="super-small-text">Karten</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="ccc-content">
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor....
-                </div>
-                <div class="ccc-footer">
-                    <a class="button cpy content-button">Lernen</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="cat-card">
-            <div class="cc-title">Mathematik</div>
-            <div class="cc-content">
-                <div class="ccc-header">
-                    <div class="ccc-title">Das kleine 1x1</div>
-                    <div class="ccc-badge">
-                        <div class="card-counter">
-                            <div class="hexagon hexagon-counter hexagon-display-center">
-                                <p>23</p>
-                                <p class="super-small-text">Karten</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="ccc-content">
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor....
-                </div>
-                <div class="ccc-footer">
-                    <a class="button cpy content-button">Lernen</a>
-                </div>
-            </div>
-        </div>
+        {{end}}
+        {{end}} 
     </div>
-    <!--category end-->
-
-    <!--category start-->
-    <div class="cat-title">
-        Sprachen
-    </div>
-
-    <div class="cat-content">
-
-        <div class="cat-card">
-            <div class="cc-title">Physik</div>
-            <div class="cc-content">
-                <div class="ccc-header">
-                    <div class="ccc-title">Lektion 1</div>
-                    <div class="ccc-badge">
-                        <div class="card-counter">
-                            <div class="hexagon hexagon-counter hexagon-display-center">
-                                <p>23</p>
-                                <p class="super-small-text">Karten</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="ccc-content">
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor....
-                </div>
-                <div class="ccc-footer">
-                    <a class="button cpy content-button">Lernen</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="cat-card">
-            <div class="cc-title">Englisch</div>
-            <div class="cc-content">
-                <div class="ccc-header">
-                    <div class="ccc-title">Unit 1</div>
-                    <div class="ccc-badge">
-                        <div class="card-counter">
-                            <div class="hexagon hexagon-counter hexagon-display-center">
-                                <p>23</p>
-                                <p class="super-small-text">Karten</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="ccc-content">
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor....
-                </div>
-                <div class="ccc-footer">
-                    <a class="button cpy content-button">Lernen</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--category end-->
+    {{end}}
 </div>
 
 {{end}}

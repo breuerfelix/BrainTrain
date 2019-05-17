@@ -8,6 +8,7 @@ type Register struct {
 	SubCategory string `json:"subcategory"`
 	Description string `json:"description"`
 	Private     bool   `json:"private"`
+	User        string `json:"user"`
 }
 
 // NewRegister constructor
@@ -24,6 +25,7 @@ func (e *Register) parse(intf map[string]interface{}) {
 	e.SubCategory = intf["subcategory"].(string)
 	e.Description = intf["description"].(string)
 	e.Private = intf["private"].(bool)
+	e.User = intf["user"].(string)
 }
 
 // GetByID get Entity by ID

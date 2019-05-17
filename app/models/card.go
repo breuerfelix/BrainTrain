@@ -3,11 +3,11 @@ package models
 // Card data structure
 type Card struct {
 	Entity
-	Title    string `json:"title"`
-	Question string `json:"question"`
-	Answer   string `json:"answer"`
-	Progress int    `json:"progress"`
-	Register string `json:"register"`
+	Title      string `json:"title"`
+	Question   string `json:"question"`
+	Answer     string `json:"answer"`
+	Progress   int    `json:"progress"`
+	RegisterID string `json:"register_id"`
 }
 
 // NewCard constructor
@@ -23,7 +23,7 @@ func (e *Card) parse(intf map[string]interface{}) {
 	e.Question = intf["question"].(string)
 	e.Answer = intf["answer"].(string)
 	e.Progress = intf["progress"].(int)
-	e.Register = intf["register"].(string)
+	e.RegisterID = intf["register_id"].(string)
 }
 
 // GetByID get Entity by ID
