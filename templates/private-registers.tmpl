@@ -57,11 +57,7 @@
                 </div>
 
                 <div class="ccc-visibility">Sichtbarkeit:<b style='padding-left:3em;'>
-                {{if $register.private}}
-                privat
-                {{else}}
-                öffentlich
-                {{end}}
+                    {{if $register.private}}privat{{else}}öffentlich{{end}}
                 </b></div>
                 <div class="ccc-progress">Fortschritt:<b style='padding-left:4em;'>{{$register.progress}}</b></div>
 
@@ -86,25 +82,27 @@
         {{range $register := $registers}}
         {{if ne eq $register.user $userID}}
         <div class="cat-card">
-            <div class="cc-title">Naturwissenschaften > Chemie</div>
+            <div class="cc-title">{{$register.category}} > {{$register.subcategory}}</div>
             <div class="cc-content">
                 <div class="ccc-header">
-                    <div class="ccc-title">Geometrische Formen und Körper</div>
+                    <div class="ccc-title">{{$register.title}}</div>
                     <div class="ccc-badge">
                         <div class="card-counter">
                             <div class="hexagon hexagon-counter hexagon-display-center">
-                                <p>23</p>
+                                <p>{{$register.amountCards}}</p>
                                 <p class="super-small-text">Karten</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="ccc-content">
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor....
+                    {{$register.description}}
                 </div>
 
-                <div class="ccc-visibility">Sichtbarkeit:<b style='padding-left:3em;'>privat</b></div>
-                <div class="ccc-progress">Fortschritt:<b style='padding-left:4em;'>20%</b></div>
+                <div class="ccc-visibility">Sichtbarkeit:<b style='padding-left:3em;'>
+                    {{if $register.private}}privat{{else}}öffentlich{{end}}
+                </b></div>
+                <div class="ccc-progress">Fortschritt:<b style='padding-left:4em;'>{{$register.progress}}</b></div>
 
                 <div class="ccc-footer">
                     <a href="/learn-register" class="button content-button">Lernen</a>
