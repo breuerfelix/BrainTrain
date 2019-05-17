@@ -24,16 +24,13 @@ type userResp struct {
 func Index(r *http.Request, data *GeneralData, pageData *PageData) {
 	data.Filename = "index"
 
-	user := &models.User{}
-	user.Type = "user"
+	user := models.NewUser()
 	allUser, _ := user.GetAll()
 
-	card := &models.Card{}
-	card.Type = "card"
+	card := models.NewCard()
 	allCards, _ := card.GetAll()
 
-	register := &models.Register{}
-	register.Type = "register"
+	register := models.NewRegister()
 	allRegisters, _ := register.GetAll()
 
 	(*pageData)["stats"] = &statistics{
