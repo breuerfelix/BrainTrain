@@ -27,99 +27,39 @@
 <!--content-header end-->
 
 <div class="categories">
+
     <!--category start-->
     <div class="cat-title">
         Selbst erstellte Karteikästen
     </div>
 
     <div class="cat-content">
+        {{range .registers}}
         <div class="cat-card">
-            <div class="cc-title">Naturwissenschaften > Mathematik</div>
+            <div class="cc-title">{{.category}} > {{.subcategory}}</div>
             <div class="cc-content">
                 <div class="ccc-header">
-                    <div class="ccc-title">Geometrische Formen und Körper</div>
+                    <div class="ccc-title">{{.title}}</div>
                     <div class="ccc-badge">
                         <div class="card-counter">
                             <div class="hexagon hexagon-counter hexagon-display-center">
-                                <p>23</p>
+                                <p>{{.amountCards}}</p>
                                 <p class="super-small-text">Karten</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="ccc-content">
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor....
+                    {{.description}}
                 </div>
-
-                <div class="ccc-visibility">Sichtbarkeit:<b style='padding-left:3em;'>öffentlich</b></div>
-                <div class="ccc-progress">Fortschritt:<b style='padding-left:4em;'>30%</b></div>
-
                 <div class="ccc-footer">
-                    <a href="/learn-register" class="button content-button">Lernen</a>
-                    <a href="/edit-register" class="button content-button success-button">Bearbeiten</a>
-                    <a href="#" class="button content-button danger-button"><img src='/static/images/icons/delete.svg' width='20px'></img></a>
+                    <a href="/learn-register" class="button cpy content-button">Lernen</a>
                 </div>
             </div>
         </div>
+        {{end}}
+    </div> 
 
-        <div class="cat-card">
-            <div class="cc-title">Naturwissenschaften > Chemie</div>
-            <div class="cc-content">
-                <div class="ccc-header">
-                    <div class="ccc-title">Geometrische Formen und Körper</div>
-                    <div class="ccc-badge">
-                        <div class="card-counter">
-                            <div class="hexagon hexagon-counter hexagon-display-center">
-                                <p>23</p>
-                                <p class="super-small-text">Karten</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="ccc-content">
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor....
-                </div>
-
-                <div class="ccc-visibility">Sichtbarkeit:<b style='padding-left:3em;'>privat</b></div>
-                <div class="ccc-progress">Fortschritt:<b style='padding-left:4em;'>20%</b></div>
-
-                <div class="ccc-footer">
-                    <a class="button cpy content-button">Lernen</a>
-                    <a class="button cpy content-button success-button">Bearbeiten</a>
-                    <a class="button cpy content-button danger-button"><img src='/static/images/icons/delete.svg' width='20px'></img></a>
-                </div>
-            </div>
-        </div>
-
-        <div class="cat-card">
-            <div class="cc-title">Naturwissenschaften > Chemie</div>
-            <div class="cc-content">
-                <div class="ccc-header">
-                    <div class="ccc-title">Geometrische Formen und Körper</div>
-                    <div class="ccc-badge">
-                        <div class="card-counter">
-                            <div class="hexagon hexagon-counter hexagon-display-center">
-                                <p>23</p>
-                                <p class="super-small-text">Karten</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="ccc-content">
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor....
-                </div>
-
-                <div class="ccc-visibility">Sichtbarkeit:<b style='padding-left:3em;'>privat</b></div>
-                <div class="ccc-progress">Fortschritt:<b style='padding-left:4em;'>20%</b></div>
-
-                <div class="ccc-footer">
-                    <a class="button cpy content-button">Lernen</a>
-                    <a class="button cpy content-button success-button">Bearbeiten</a>
-                    <a class="button cpy content-button danger-button"><img src='/static/images/icons/delete.svg' width='20px'></img></a>
-                </div>
-            </div>
-        </div>
-    </div>
     <!--category end-->
 
     <!--category start-->
