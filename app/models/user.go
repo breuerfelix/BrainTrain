@@ -9,33 +9,33 @@ type User struct {
 	Date     string `json:"date"`
 }
 
-func (u *User) parse(intf map[string]interface{}) {
-	u.parseEntity(intf)
-	u.Email = intf["email"].(string)
-	u.Name = intf["name"].(string)
-	u.Password = intf["password"].(string)
+func (e *User) parse(intf map[string]interface{}) {
+	e.parseEntity(intf)
+	e.Email = intf["email"].(string)
+	e.Name = intf["name"].(string)
+	e.Password = intf["password"].(string)
 }
 
-// GetByID a user by ID
-func (u *User) GetByID() error {
-	user, err := db.Get(u.ID, nil)
+// GetByID a Entity by ID
+func (e *User) GetByID() error {
+	entity, err := DB.Get(e.ID, nil)
 	if err != nil {
 		return err
 	}
 
-	u.parse(user)
+	e.parse(entity)
 
 	return nil
 }
 
 // Get by attribute and value
-func (u *User) Get(attr string, value string) error {
-	resp, err := u.GetBy(attr, value)
+func (e *User) Get(attr string, value string) error {
+	resp, err := e.getBy(attr, value)
 
 	if err != nil {
 		return err
 	}
 
-	u.parse(resp)
+	e.parse(resp)
 	return nil
 }

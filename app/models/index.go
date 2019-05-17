@@ -7,12 +7,12 @@ import (
 	couchdb "github.com/leesper/couchdb-golang"
 )
 
-// global package db handle
-var db *couchdb.Database
+// DB global package db handle
+var DB *couchdb.Database
 
 func init() {
 	var err error
-	db, err = couchdb.NewDatabase("http://localhost:5984/braintrain")
+	DB, err = couchdb.NewDatabase("http://localhost:5984/braintrain")
 	if err != nil {
 		panic(err)
 	}
@@ -28,7 +28,7 @@ type Entity struct {
 	couchdb.Document
 }
 
-func (e *Entity) toMap() map[string]interface{} {
+func toMap(e interface{}) map[string]interface{} {
 	var doc map[string]interface{}
 	tJSON, _ := json.Marshal(e)
 	json.Unmarshal(tJSON, &doc)
@@ -42,15 +42,15 @@ func (e *Entity) parseEntity(intf map[string]interface{}) {
 }
 
 // Add a new entity to the db
-func (e *Entity) Add() error {
-	eMap := e.toMap()
+func Add(e interface{}) error {
+	eMap := toMap(e)
 
 	// Delete _id and _rev from map, otherwise DB access will be denied (unauthorized)
 	delete(eMap, "_id")
 	delete(eMap, "_rev")
 
 	// Add todo to DB
-	_, _, err := db.Save(eMap, nil)
+	_, _, err := DB.Save(eMap, nil)
 
 	if err != nil {
 		fmt.Printf("[Add] error: %s", err)
@@ -59,9 +59,9 @@ func (e *Entity) Add() error {
 	return err
 }
 
-// GetAll entity from db
+// GetAll entity from DB
 func (e *Entity) GetAll() ([]map[string]interface{}, error) {
-	allEntities, err := db.QueryJSON(fmt.Sprintf(`{
+	allEntities, err := DB.QueryJSON(fmt.Sprintf(`{
 		"selector": {
 			"type": {
 				"$eq": "%s"
@@ -76,9 +76,9 @@ func (e *Entity) GetAll() ([]map[string]interface{}, error) {
 	return allEntities, nil
 }
 
-// GetBy  entity from db
-func (e *Entity) GetBy(attr string, value string) (map[string]interface{}, error) {
-	entity, err := db.QueryJSON(fmt.Sprintf(`{
+// GetBy  entity from DB
+func (e *Entity) getBy(attr string, value string) (map[string]interface{}, error) {
+	entity, err := DB.QueryJSON(fmt.Sprintf(`{
 		"selector": {
 			"%s": {
 				"$eq": "%s"
