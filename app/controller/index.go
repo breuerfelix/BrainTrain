@@ -12,14 +12,6 @@ type statistics struct {
 	RegistersTotal int
 }
 
-type userResp struct {
-	Users []struct {
-		Email    string
-		Password string
-		Name     string
-	}
-}
-
 // Index controller
 func Index(r *http.Request, data *GeneralData, pageData *PageData) {
 	data.Filename = "index"
