@@ -18,8 +18,8 @@
                     <div class="edit-button">
                         <a href="#" class="button cpy">Edit</a>
                     </div>
-                    <p class="name">Max Mustermann</p>
-                    <p class="email">mustermann@example.com</p>
+                    <p class="name">{{.general.User.Name}}</p>
+                    <p class="email">{{.general.User.Email}}</p>
                 </div>
             </div>
             <div class="content-block">
@@ -30,15 +30,15 @@
                     <div class="stats-value-wrapper">
                         <div class="content-row">
                             <div class="row-name">Erstellte Karten:</div>
-                            <div class="row-value">{{.Cards}}</div>
+                            <div class="row-value">{{.stats.Cards}}</div>
                         </div>
                         <div class="content-row">
                             <div class="row-name">Erstellte Karteien:</div>
-                            <div class="row-value">{{.Registers}}</div>
+                            <div class="row-value">{{.stats.Registers}}</div>
                         </div>
                         <div class="content-row">
                             <div class="row-name">Mitglied seit:</div>
-                            <div class="row-value">{{.MemberSince}}</div>
+                            <div class="row-value">{{.general.User.Date}}</div>
                         </div>
                     </div>
                 </div>
