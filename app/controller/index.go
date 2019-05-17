@@ -1,7 +1,6 @@
 package controller
 
 import (
-	"fmt"
 	"net/http"
 
 	"github.com/breuerfelix/BrainTrain/app/models"
@@ -25,16 +24,21 @@ type userResp struct {
 func Index(r *http.Request, data *GeneralData, pageData *PageData) {
 	data.Filename = "index"
 
-	// just a test to see how the abstraktion works
 	user := &models.User{}
 	user.Type = "user"
-	bla, _ := user.GetAll()
+	allUser, _ := user.GetAll()
 
-	fmt.Println(bla)
+	card := &models.Card{}
+	card.Type = "card"
+	allCards, _ := card.GetAll()
+
+	register := &models.Register{}
+	register.Type = "register"
+	allRegisters, _ := register.GetAll()
 
 	(*pageData)["stats"] = &statistics{
-		Users:          32,
-		CardsTotal:     124,
-		RegistersTotal: 22,
+		Users:          len(allUser),
+		CardsTotal:     len(allCards),
+		RegistersTotal: len(allRegisters),
 	}
 }
