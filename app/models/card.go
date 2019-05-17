@@ -10,6 +10,13 @@ type Card struct {
 	Register string `json:"register"`
 }
 
+// NewCard constructor
+func NewCard() *Card {
+	e := new(Card)
+	e.Type = "card"
+	return e
+}
+
 func (e *Card) parse(intf map[string]interface{}) {
 	e.parseEntity(intf)
 	e.Title = intf["title"].(string)

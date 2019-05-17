@@ -10,6 +10,13 @@ type Register struct {
 	Private     bool   `json:"private"`
 }
 
+// NewRegister constructor
+func NewRegister() *Register {
+	e := new(Register)
+	e.Type = "register"
+	return e
+}
+
 func (e *Register) parse(intf map[string]interface{}) {
 	e.parseEntity(intf)
 	e.Title = intf["title"].(string)

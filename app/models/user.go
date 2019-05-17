@@ -9,6 +9,13 @@ type User struct {
 	Date     string `json:"date"`
 }
 
+// NewUser constructor
+func NewUser() *User {
+	e := new(User)
+	e.Type = "user"
+	return e
+}
+
 func (e *User) parse(intf map[string]interface{}) {
 	e.parseEntity(intf)
 	e.Email = intf["email"].(string)
