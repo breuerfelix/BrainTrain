@@ -22,8 +22,6 @@ func init() {
 
 // Entity is the base database item struct
 type Entity struct {
-	ID   string `json:"_id"`
-	Rev  string `json:"_rev"`
 	Type string `json:"type"`
 	couchdb.Document
 }
@@ -49,7 +47,6 @@ func Add(e interface{}) error {
 	delete(eMap, "_id")
 	delete(eMap, "_rev")
 
-	// Add todo to DB
 	_, _, err := DB.Save(eMap, nil)
 
 	if err != nil {
@@ -76,7 +73,7 @@ func (e *Entity) GetAll() ([]map[string]interface{}, error) {
 	return allEntities, nil
 }
 
-// GetBy  entity from DB
+// GetBy entity from DB
 func (e *Entity) getBy(attr string, value string) (map[string]interface{}, error) {
 	entity, err := DB.QueryJSON(fmt.Sprintf(`{
 		"selector": {
