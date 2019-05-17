@@ -16,6 +16,7 @@ type statistics struct {
 func Index(r *http.Request, data *GeneralData, pageData *PageData) {
 	data.Filename = "index"
 
+	// TODO maybe use a sum aggregation ? 
 	user := models.NewUser()
 	allUser, _ := user.GetAll()
 
