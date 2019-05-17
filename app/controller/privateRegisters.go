@@ -20,7 +20,7 @@ func PrivateRegisters(r *http.Request, data *GeneralData, pageData *PageData) {
 				"$eq": "%s"
 			}
 		}
-	}`, data.Username))
+	}`, data.Name))
 
 	if err != nil {
 		panic(err)

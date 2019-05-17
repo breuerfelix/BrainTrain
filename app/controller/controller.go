@@ -5,6 +5,8 @@ import (
 	"html/template"
 	"log"
 	"net/http"
+
+	"github.com/breuerfelix/BrainTrain/app/models"
 )
 
 // Categorie struct
@@ -13,17 +15,9 @@ type Categorie struct {
 	SubCategories []string
 }
 
-// User struct
-type User struct {
-	NumCards     int
-	NumRegisters int
-	MemberSince  string
-	Username     string
-}
-
 // GeneralData struct
 type GeneralData struct {
-	User
+	models.User
 	Filename            string
 	LoggedIn            bool
 	NewPublicRegisters  int
@@ -69,10 +63,8 @@ func initGeneralData(data *GeneralData) {
 	data.ShowAnswer = false
 
 	// fake user data
-	data.User.Username = "Max Mustermann"
-	data.User.MemberSince = "24.12.2018"
-	data.User.NumCards = 24
-	data.User.NumRegisters = 7
+	data.User.Name = "Max Mustermann"
+	data.User.Date = "24.12.2018"
 
 	// init categories
 	nature := Categorie{}
