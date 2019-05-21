@@ -22,6 +22,8 @@ func init() {
 
 // Entity is the base database item struct
 type Entity struct {
+	ID   string `json:"_id"`
+	Rev  string `json:"_rev"`
 	Type string `json:"type"`
 	couchdb.Document
 }
