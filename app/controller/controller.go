@@ -18,6 +18,7 @@ type Categorie struct {
 // GeneralData struct
 type GeneralData struct {
 	models.User
+	UserID              string
 	Filename            string
 	LoggedIn            bool
 	NewPublicRegisters  int
@@ -65,6 +66,7 @@ func initGeneralData(data *GeneralData) {
 	// fake user data
 	data.User.Name = "Max Mustermann"
 	data.User.Date = "24.12.2018"
+	data.UserID = "c2abd60d207e8b04baae4b2a50000801"
 
 	// init categories
 	nature := Categorie{}

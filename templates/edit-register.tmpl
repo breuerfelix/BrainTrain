@@ -14,7 +14,7 @@
                     Name
                 </div>
                 <div class="ov-subtitle">
-                    Geometrie
+                    {{.register.Title}}
                 </div>
             </div>
             <div class="col-xs">
@@ -22,7 +22,7 @@
                     Kategorie
                 </div>
                 <div class="ov-subtitle">
-                    Naturwissenschaften > Mathematik
+                    {{.register.Category}} > {{.register.SubCategory}}
                 </div>
             </div>
             <div class="col-xs">
@@ -30,7 +30,7 @@
                     Fortschritt
                 </div>
                 <div class="ov-subtitle">
-                    0 %
+                    {{.progress}} %
                 </div>
             </div>
             <div class="col-xs center">
@@ -38,7 +38,7 @@
             </div>
             <div class="col-xs center">
                 <div class="hexagon hexagon-cards hexagon-cards-text">
-                    <p>23</p>
+                    <p>{{.amountCards}}</p>
                     <p class="super-small-text">Karten</p>
                 </div>
             </div>
@@ -46,9 +46,10 @@
     </div>
 
     <div class="col-xs-12 col-md-4 col-lg-3 cards">
+        {{range $i, $card := .cards}}
         <div class="box">
-            <div class="card-pos"># 1</div>
-            <div class="card-title">Titel der Karte</div>
+            <div class="card-pos"># {{$i}}</div>
+            <div class="card-title">{{$card.title}}</div>
             <div class="buttons">
                 <a href="#" class="button success-button card-btn">Bearbeiten</a>
                 <a href="#" class="button danger-button card-btn">
@@ -56,46 +57,7 @@
                 </a>
             </div>
         </div>
-        <div class="box">
-            <div class="card-pos"># 2</div>
-            <div class="card-title">Titel der Karte</div>
-            <div class="buttons">
-                <a href="#" class="button success-button card-btn">Bearbeiten</a>
-                <a href="#" class="button danger-button card-btn">
-                    <img src="/static/images/icons/delete.svg" width="17px">
-                </a>
-            </div>
-        </div>
-        <div class="box">
-            <div class="card-pos"># 3</div>
-            <div class="card-title">Titel der Karte</div>
-            <div class="buttons">
-                <a href="#" class="button success-button card-btn">Bearbeiten</a>
-                <a href="#" class="button danger-button card-btn">
-                    <img src="/static/images/icons/delete.svg" width="17px">
-                </a>
-            </div>
-        </div>
-        <div class="box">
-            <div class="card-pos"># 5</div>
-            <div class="card-title">Titel der Karte</div>
-            <div class="buttons">
-                <a href="#" class="button success-button card-btn">Bearbeiten</a>
-                <a href="#" class="button danger-button card-btn">
-                    <img src="/static/images/icons/delete.svg" width="17px">
-                </a>
-            </div>
-        </div>
-        <div class="box">
-            <div class="card-pos"># 4</div>
-            <div class="card-title">Titel der Karte</div>
-            <div class="buttons">
-                <a href="#" class="button success-button card-btn">Bearbeiten</a>
-                <a href="#" class="button danger-button card-btn">
-                    <img src="/static/images/icons/delete.svg" width="17px">
-                </a>
-            </div>
-        </div>
+        {{end}}
     </div>
 
     <div class="col-xs-12 col-md-1 col-lg-1"></div>
@@ -121,7 +83,7 @@
                 <textarea type="text" rows="6"></textarea>
             </div>
             <div class="col-xs-12 col-button center">
-                <a href="/view-register" class="button">Speichern</a>
+                <a href="/view-register?register={{.register.ID}}" class="button">Speichern</a>
                 <a href="/view-register" class="button danger-button">Abbrechen</a>
             </div>
         </div>

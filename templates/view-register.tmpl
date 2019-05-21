@@ -14,7 +14,7 @@
                     Name
                 </div>
                 <div class="ov-subtitle">
-                    Geometrie
+                    {{.register.Title}}
                 </div>
             </div>
             <div class="col-xs">
@@ -22,7 +22,7 @@
                     Kategorie
                 </div>
                 <div class="ov-subtitle">
-                    Naturwissenschaften > Mathematik
+                    {{.register.Category}} > {{.register.SubCategory}}
                 </div>
             </div>
             <div class="col-xs">
@@ -38,39 +38,30 @@
                     Fortschritt
                 </div>
                 <div class="ov-subtitle">
-                    0 %
+                    {{.progress}} %
                 </div>
             </div>
             <div class="col-xs center">
                 <div class="hexagon hexagon-cards hexagon-cards-text">
-                    <p>23</p>
+                    <p>{{.amountCards}}</p>
                     <p class="super-small-text">Karten</p>
                 </div>
             </div>
         </div>
     </div>
 
+    {{ $activeCard := .card }}
     <div class="col-xs-12 col-md-4 col-lg-3 cards">
-        <div class="box">
-            <div class="card-pos"># 1</div>
-            <div class="card-title">Titel der Karte</div>
-        </div>
+        {{range $i, $card := .cards}}
+        {{if eq $card._id $activeCard._id}}
         <div class="box box-active">
-            <div class="card-pos"># 2</div>
-            <div class="card-title">Titel der Karte</div>
-        </div>
+        {{else}}
         <div class="box">
-            <div class="card-pos"># 3</div>
-            <div class="card-title">Titel der Karte</div>
+        {{end}}
+            <div class="card-pos"># {{$i}}</div>
+            <div class="card-title">{{$card.title}}</div>
         </div>
-        <div class="box">
-            <div class="card-pos"># 5</div>
-            <div class="card-title">Titel der Karte</div>
-        </div>
-        <div class="box">
-            <div class="card-pos"># 4</div>
-            <div class="card-title">Titel der Karte</div>
-        </div>
+        {{end}}
     </div>
 
     <div class="col-xs-12 col-md-1 col-lg-1"></div>
@@ -81,22 +72,22 @@
                 <label>Titel</label>
             </div>
             <div class="col-xs-4 center" style="justify-content: left; font-weight: bold;">
-                Titel der Karte
+                {{$activeCard.title}}
             </div>
             <div class="col-xs-5 center" style="justify-content: left;">
-                <div class="hexagon-small hexagon-counter hexagon-display-center green">
+                <div class="hexagon-small hexagon-counter hexagon-display-center{{if eq 0.0 $activeCard.progress}} green{{end}}">
                     <p>0</p>
                 </div>
-                <div class="hexagon-small hexagon-counter hexagon-display-center">
+                <div class="hexagon-small hexagon-counter hexagon-display-center{{if eq 1.0 $activeCard.progress}} green{{end}}">
                     <p>1</p>
                 </div>
-                <div class="hexagon-small hexagon-counter hexagon-display-center">
+                <div class="hexagon-small hexagon-counter hexagon-display-center{{if eq 2.0 $activeCard.progress}} green{{end}}">
                     <p>2</p>
                 </div>
-                <div class="hexagon-small hexagon-counter hexagon-display-center">
+                <div class="hexagon-small hexagon-counter hexagon-display-center{{if eq 3.0 $activeCard.progress}} green{{end}}">
                     <p>3</p>
                 </div>
-                <div class="hexagon-small hexagon-counter hexagon-display-center">
+                <div class="hexagon-small hexagon-counter hexagon-display-center{{if eq 4.0 $activeCard.progress}} green{{end}}">
                     <p>4</p>
                 </div>
             </div>
@@ -104,13 +95,13 @@
                 <label>Frage</label>
             </div>
             <div class="col-input col-xs-9">
-                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque consectetur consequuntur facere nostrum nihil earum exercitationem officia rem magni fuga vel, dignissimos, quo voluptas iste minus dolorem quae tenetur. Iure.</p>
+                <p class="card-text">{{$activeCard.question}}</p>
             </div>
             <div class="col-label col-xs-3">
                 <label>Antwort</label>
             </div>
             <div class="col-input col-xs-9">
-                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque consectetur consequuntur facere nostrum nihil earum exercitationem officia rem magni fuga vel, dignissimos, quo voluptas iste minus dolorem quae tenetur. Iure.</p>
+                <p class="card-text">{{$activeCard.answer}}</p>
             </div>
         </div>
     </div>

@@ -26,7 +26,7 @@
 </div>
 <!--content-header end-->
 
-{{ $userID := .currentUserID }}
+{{ $userID := .general.UserID }}
 {{ $registers := .registers }}
 
 <div class="categories">
@@ -63,7 +63,9 @@
                 <div class="ccc-progress">Fortschritt:<b style='padding-left:4em;'>{{$register.progress}}</b></div>
 
                 <div class="ccc-footer">
-                    <a href="/learn-register" class="button cpy content-button">Lernen</a>
+                    <a href="/learn-register?register={{$register._id}}" class="button cpy content-button">Lernen</a>
+                    <a href='/edit-register?register={{$register._id}}' class="button cpy content-button success-button">Bearbeiten</a>
+                    <a class="button cpy content-button danger-button"><img src='/static/images/icons/delete.svg' width='20px'></a>
                 </div>
             </div>
         </div>
@@ -104,9 +106,7 @@
                 <div class="ccc-progress">Fortschritt:<b style='padding-left:4em;'>{{$register.progress}}</b></div>
 
                 <div class="ccc-footer">
-                    <a href="/learn-register" class="button content-button">Lernen</a>
-                    <a href="/edit-register" class="button content-button success-button">Bearbeiten</a>
-                    <a href="#" class="button content-button danger-button"><img src='/static/images/icons/delete.svg' width='20px'></img></a>
+                    <a href="/learn-register?register={{$register._id}}" class="button content-button">Lernen</a>
                 </div>
             </div>
         </div>

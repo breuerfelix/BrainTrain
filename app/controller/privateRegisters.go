@@ -11,10 +11,6 @@ import (
 func PrivateRegisters(r *http.Request, data *GeneralData, pageData *PageData) {
 	data.Filename = "private-registers"
 
-	// TODO remove, hard coded user id
-	// get from jwt via general data
-	userID := "c2abd60d207e8b04baae4b2a50000801"
-
 	// needs to query "user hase used but is public somehow" too
 	allPrivateRegisters, err := models.DB.QueryJSON(fmt.Sprintf(`{
 		"selector": {
@@ -25,9 +21,7 @@ func PrivateRegisters(r *http.Request, data *GeneralData, pageData *PageData) {
 				"$eq": "%s"
 			}
 		}
-	}`, data.Name))
-
-	print(len(allPrivateRegisters))
+	}`, data.UserID))
 
 	if err != nil {
 		panic(err)
@@ -52,5 +46,4 @@ func PrivateRegisters(r *http.Request, data *GeneralData, pageData *PageData) {
 
 	// append to template data
 	(*pageData)["registers"] = &allPrivateRegisters
-	(*pageData)["currentUserID"] = userID
 }
