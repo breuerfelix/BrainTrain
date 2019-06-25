@@ -1,12 +1,13 @@
 package controller
 
 import (
+	"crypto/rand"
 	"fmt"
 	"html/template"
 	"log"
 	"net/http"
 
-	"github.com/breuerfelix/BrainTrain/app/models"
+	"github.com/gorilla/sessions"
 )
 
 // Categorie struct
@@ -17,8 +18,8 @@ type Categorie struct {
 
 // GeneralData struct
 type GeneralData struct {
-	models.User
 	UserID              string
+	Username            string
 	Filename            string
 	LoggedIn            bool
 	NewPublicRegisters  int
@@ -32,10 +33,32 @@ type PageData map[string]interface{}
 
 type controllerFunction func(*http.Request, *GeneralData, *PageData)
 
+var key []byte
+var store *sessions.CookieStore
+
+func init() {
+	key = make([]byte, 32)
+	rand.Read(key)
+	store = sessions.NewCookieStore(key)
+}
+
 // HandleWithContext func
-func HandleWithContext(controllerFunc controllerFunction) func(http.ResponseWriter, *http.Request) {
+func HandleWithContext(controllerFunc controllerFunction, authRequired bool) func(http.ResponseWriter, *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
+		session, _ := store.Get(r, "session")
+
 		data := GeneralData{}
+
+		// Check if user is authenticated
+		if auth, ok := session.Values["authenticated"].(bool); authRequired && (!ok || !auth) {
+			http.Redirect(w, r, "/", http.StatusFound)
+			return
+		} else {
+			data.LoggedIn = true
+			data.UserID = session.Values["userID"].(string)
+			data.Username = session.Values["userName"].(string)
+		}
+
 		pageData := PageData{
 			"general": &data,
 		}
@@ -54,20 +77,6 @@ func HandleWithContext(controllerFunc controllerFunction) func(http.ResponseWrit
 }
 
 func initGeneralData(data *GeneralData) {
-	// types
-	// user, card, register
-
-	// fake data
-	data.LoggedIn = true
-	data.NewPublicRegisters = 20
-	data.NewPrivateRegisters = 0
-	data.ShowAnswer = false
-
-	// fake user data
-	data.User.Name = "Max Mustermann"
-	data.User.Date = "24.12.2018"
-	data.UserID = "c2abd60d207e8b04baae4b2a50000801"
-
 	// init categories
 	nature := Categorie{}
 	nature.Name = "Naturwissenschaften"

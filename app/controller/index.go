@@ -16,19 +16,20 @@ type statistics struct {
 func Index(r *http.Request, data *GeneralData, pageData *PageData) {
 	data.Filename = "index"
 
-	// TODO maybe use a sum aggregation ? 
 	user := models.NewUser()
-	allUser, _ := user.GetAll()
-
-	card := models.NewCard()
-	allCards, _ := card.GetAll()
+	allUser := user.GetAllUser()
 
 	register := models.NewRegister()
-	allRegisters, _ := register.GetAll()
+	allRegisters := register.GetAllRegister()
+
+	countCards := 0
+	for _, register := range allRegisters {
+		countCards += len(register.Cards)
+	}
 
 	(*pageData)["stats"] = &statistics{
 		Users:          len(allUser),
-		CardsTotal:     len(allCards),
+		CardsTotal:     countCards,
 		RegistersTotal: len(allRegisters),
 	}
 }

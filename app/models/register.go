@@ -1,5 +1,9 @@
 package models
 
+import (
+	"encoding/json"
+)
+
 // Register data structure
 type Register struct {
 	Entity
@@ -8,7 +12,8 @@ type Register struct {
 	SubCategory string `json:"subcategory"`
 	Description string `json:"description"`
 	Private     bool   `json:"private"`
-	User        string `json:"user"`
+	Owner       string `json:"owner"`
+	Cards       []Card `json:"cards"`
 }
 
 // NewRegister constructor
@@ -19,13 +24,22 @@ func NewRegister() *Register {
 }
 
 func (e *Register) parse(intf map[string]interface{}) {
-	e.parseEntity(intf)
-	e.Title = intf["title"].(string)
-	e.Category = intf["category"].(string)
-	e.SubCategory = intf["subcategory"].(string)
-	e.Description = intf["description"].(string)
-	e.Private = intf["private"].(bool)
-	e.User = intf["user"].(string)
+	data, _ := json.Marshal(intf)
+	json.Unmarshal(data, e)
+}
+
+// GetAllRegister gets all registers
+func (e *Register) GetAllRegister() []Register {
+	eListMap, _ := e.GetAll()
+	eList := make([]Register, len(eListMap))
+
+	for index, element := range eListMap {
+		parsed := NewRegister()
+		parsed.parse(element)
+		eList[index] = *parsed
+	}
+
+	return eList
 }
 
 // GetByID get Entity by ID

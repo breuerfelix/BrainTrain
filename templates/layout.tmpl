@@ -129,17 +129,19 @@
         {{if .LoggedIn}}
         <a href="/new-register" class="button cpy">Neue Kartei</a>
         <div style="margin-right: 20px;">
-            <div><b>{{.Name}}</b></div>
+            <div><b>{{.Username}}</b></div>
             <a href="/" class="white" style="text-align: right; font-size: 13px;">Logout</a>
         </div>
         <div class="profile-image-wrapper">
             <a href="/profile"><img src="/static/images/icons/mein-profil.svg" width="40px"></a>
         </div>
         {{else}}
-        <input class="navbar-input cpg white" type="text" placeholder="Nutzername">
-        <input class="navbar-input cpg white" type="password" placeholder="Passwort">
-        <a class="button cpy">Login</button>
-        <a href="/signup" class="white small">Registrieren</a>
+        <form action="/login" method="POST">
+            <input class="navbar-input cpg white" name="username" type="text" placeholder="Nutzername">
+            <input class="navbar-input cpg white" name="password" type="password" placeholder="Passwort">
+            <button type="submit" class="button cpy">Login</button>
+            <a href="/signup" class="white small">Registrieren</a>
+        </form>
         {{end}}
     </div>
 {{end}}
