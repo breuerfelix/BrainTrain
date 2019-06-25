@@ -22,7 +22,7 @@ func EditRegister(r *http.Request, data *GeneralData, pageData *PageData) {
 	register.ID = registerID
 	register.GetByID()
 
-	if register.User != data.UserID {
+	if register.Owner == data.UserID {
 		panic("not allowed !! this is not your register!")
 	}
 

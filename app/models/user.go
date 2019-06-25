@@ -1,5 +1,7 @@
 package models
 
+import "encoding/json"
+
 // User data structure
 type User struct {
 	Entity
@@ -17,10 +19,23 @@ func NewUser() *User {
 }
 
 func (e *User) parse(intf map[string]interface{}) {
-	e.parseEntity(intf)
-	e.Email = intf["email"].(string)
-	e.Name = intf["name"].(string)
-	e.Password = intf["password"].(string)
+	data, _ := json.Marshal(intf)
+	json.Unmarshal(data, e)
+}
+
+// GetAllRegister gets all registers
+func (e *User) GetAllUser() []User {
+	eListMap, _ := e.GetAll()
+
+	eList := make([]User, len(eListMap))
+
+	for index, element := range eListMap {
+		parsed := NewUser()
+		parsed.parse(element)
+		eList[index] = *parsed
+	}
+
+	return eList
 }
 
 // GetByID a Entity by ID

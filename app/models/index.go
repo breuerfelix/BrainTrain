@@ -22,8 +22,6 @@ func init() {
 
 // Entity is the base database item struct
 type Entity struct {
-	ID   string `json:"_id"`
-	Rev  string `json:"_rev"`
 	Type string `json:"type"`
 	couchdb.Document
 }
@@ -35,27 +33,9 @@ func toMap(e interface{}) map[string]interface{} {
 	return doc
 }
 
-func (e *Entity) parseEntity(intf map[string]interface{}) {
-	e.ID = intf["_id"].(string)
-	e.Rev = intf["_rev"].(string)
-	e.Type = intf["type"].(string)
-}
-
-// Add a new entity to the db
-func Add(e interface{}) error {
-	eMap := toMap(e)
-
-	// Delete _id and _rev from map, otherwise DB access will be denied (unauthorized)
-	delete(eMap, "_id")
-	delete(eMap, "_rev")
-
-	_, _, err := DB.Save(eMap, nil)
-
-	if err != nil {
-		fmt.Printf("[Add] error: %s", err)
-	}
-
-	return err
+func (e *Entity) parse(intf map[string]interface{}) {
+	data, _ := json.Marshal(intf)
+	json.Unmarshal(data, e)
 }
 
 // GetAll entity from DB
@@ -75,6 +55,23 @@ func (e *Entity) GetAll() ([]map[string]interface{}, error) {
 	return allEntities, nil
 }
 
+// Add a new entity to the db
+func Add(e interface{}) error {
+	eMap := toMap(e)
+
+	// Delete _id and _rev from map, otherwise DB access will be denied (unauthorized)
+	delete(eMap, "_id")
+	delete(eMap, "_rev")
+
+	_, _, err := DB.Save(eMap, nil)
+
+	if err != nil {
+		fmt.Printf("[Add] error: %s", err)
+	}
+
+	return err
+}
+
 // GetBy entity from DB
 func (e *Entity) getBy(attr string, value string) (map[string]interface{}, error) {
 	entity, err := DB.QueryJSON(fmt.Sprintf(`{
@@ -89,5 +86,9 @@ func (e *Entity) getBy(attr string, value string) (map[string]interface{}, error
 		return nil, err
 	}
 
-	return entity[0], nil
+	if len(entity) > 0 {
+		return entity[0], nil
+	}
+
+	return nil, nil
 }

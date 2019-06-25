@@ -8,16 +8,21 @@ import (
 
 // Init function
 func Init() {
-	http.HandleFunc("/", controller.HandleWithContext(controller.Index))
-	http.HandleFunc("/public-registers", controller.HandleWithContext(controller.PublicRegisters))
-	http.HandleFunc("/private-registers", controller.HandleWithContext(controller.PrivateRegisters))
-	http.HandleFunc("/signup", controller.HandleWithContext(controller.Signup))
-	http.HandleFunc("/new-register", controller.HandleWithContext(controller.NewRegister))
-	http.HandleFunc("/edit-register", controller.HandleWithContext(controller.EditRegister))
-	http.HandleFunc("/view-register", controller.HandleWithContext(controller.ViewRegister))
-	http.HandleFunc("/learn-register", controller.HandleWithContext(controller.LearnRegister))
-	http.HandleFunc("/profile", controller.HandleWithContext(controller.Profile))
+	// template routes
+	http.HandleFunc("/", controller.HandleWithContext(controller.Index, false))
+	http.HandleFunc("/public-registers", controller.HandleWithContext(controller.PublicRegisters, false))
+	http.HandleFunc("/private-registers", controller.HandleWithContext(controller.PrivateRegisters, true))
+	http.HandleFunc("/signup", controller.HandleWithContext(controller.Signup, false))
+	http.HandleFunc("/new-register", controller.HandleWithContext(controller.NewRegister, true))
+	http.HandleFunc("/edit-register", controller.HandleWithContext(controller.EditRegister, true))
+	http.HandleFunc("/view-register", controller.HandleWithContext(controller.ViewRegister, false))
+	http.HandleFunc("/learn-register", controller.HandleWithContext(controller.LearnRegister, true))
+	http.HandleFunc("/profile", controller.HandleWithContext(controller.Profile, true))
 
+	// functional routes
+	http.HandleFunc("/login", controller.Login)
+
+	// file server
 	fs := http.FileServer(http.Dir("static/"))
 	http.Handle("/static/", http.StripPrefix("/static/", fs))
 }
