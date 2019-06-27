@@ -22,9 +22,9 @@ func LearnRegister(r *http.Request, data *GeneralData, pageData *PageData) {
 	register.ID = registerID
 	register.GetByID()
 
-	if register.Owner != data.UserID {
+	/* if register.Owner != data.UserID {
 		panic("not allowed !! this is not your register!")
-	}
+	} */
 
 	allCards, _ := models.DB.QueryJSON(fmt.Sprintf(`{
 		"selector": {

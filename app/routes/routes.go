@@ -21,6 +21,8 @@ func Init() {
 
 	// functional routes
 	http.HandleFunc("/login", controller.Login)
+	http.HandleFunc("/logout", controller.Logout)
+	http.HandleFunc("/register", controller.Register)
 
 	// file server
 	fs := http.FileServer(http.Dir("static/"))
