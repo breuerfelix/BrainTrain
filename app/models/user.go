@@ -1,6 +1,9 @@
 package models
 
-import "encoding/json"
+import (
+	"encoding/json"
+	"fmt"
+)
 
 // User data structure
 type User struct {
@@ -23,7 +26,7 @@ func (e *User) parse(intf map[string]interface{}) {
 	json.Unmarshal(data, e)
 }
 
-// GetAllRegister gets all registers
+// GetAllUser gets all registers
 func (e *User) GetAllUser() []User {
 	eListMap, _ := e.GetAll()
 
@@ -60,4 +63,21 @@ func (e *User) Get(attr string, value string) error {
 
 	e.parse(resp)
 	return nil
+}
+
+// Insert new user
+func (e *User) Insert() error {
+	eMap := toMap(e)
+
+	// Delete _id and _rev from map, otherwise DB access will be denied (unauthorized)
+	delete(eMap, "_id")
+	delete(eMap, "_rev")
+
+	_, _, err := DB.Save(eMap, nil)
+
+	if err != nil {
+		fmt.Printf("[Add] error: %s", err)
+	}
+
+	return err
 }

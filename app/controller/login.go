@@ -6,7 +6,7 @@ import (
 	"github.com/breuerfelix/BrainTrain/app/models"
 )
 
-// Login
+// Login a user
 func Login(w http.ResponseWriter, r *http.Request) {
 	session, _ := store.Get(r, "session")
 
@@ -16,7 +16,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
 	user := models.NewUser()
 	user.Get("name", userName)
 
-	if user.Password == password {
+	if user.ID != "" && user.Password == password {
 		session.Values["authenticated"] = true
 		session.Values["userName"] = user.Name
 		session.Values["userID"] = user.ID

@@ -19,16 +19,21 @@ type Categorie struct {
 
 // GeneralData struct
 type GeneralData struct {
-	UserID              string
-	Username            string
-	User                models.User
-	Filename            string
-	LoggedIn            bool
-	NewPublicRegisters  int
-	NewPrivateRegisters int
-	ShowAnswer          bool
-	Categories          []Categorie
-	WrongPassword       bool
+	UserID                 string
+	Username               string
+	User                   models.User
+	Filename               string
+	LoggedIn               bool
+	NewPublicRegisters     int
+	NewPrivateRegisters    int
+	ShowAnswer             bool
+	Categories             []Categorie
+	WrongPassword          bool
+	ErrorNameNotSet        bool
+	ErrorEmailNotSet       bool
+	ErrorPasswordNotSame   bool
+	ErrorUserExistsAlready bool
+	ErrorDuringSave        bool
 }
 
 // PageData for templates
@@ -65,6 +70,8 @@ func HandleWithContext(controllerFunc controllerFunction, authRequired bool) fun
 				user.GetByID()
 				data.User = *user
 
+				fmt.Println(user)
+
 			} else {
 				fmt.Println("not logged in")
 				http.Redirect(w, r, "/", http.StatusFound)
@@ -72,10 +79,41 @@ func HandleWithContext(controllerFunc controllerFunction, authRequired bool) fun
 			}
 		}
 
-		if wrong, ok := session.Values["wrongPassword"].(bool); ok && wrong {
+		if err, ok := session.Values["wrongPassword"].(bool); ok && err {
 			fmt.Println("wrong password")
 			data.WrongPassword = true
 			session.Values["wrongPassword"] = false
+			session.Save(r, w)
+		}
+
+		if err, ok := session.Values["errorNameNotSet"].(bool); ok && err {
+			fmt.Println("errorNameNotSet")
+			data.ErrorNameNotSet = true
+			session.Values["wrongPassword"] = false
+			session.Save(r, w)
+		}
+		if err, ok := session.Values["errorEmailNotSet"].(bool); ok && err {
+			fmt.Println("errorEmailNotSet")
+			data.ErrorEmailNotSet = true
+			session.Values["errorNameNotSet"] = false
+			session.Save(r, w)
+		}
+		if err, ok := session.Values["errorPasswordNotSame"].(bool); ok && err {
+			fmt.Println("errorPasswordNotSame")
+			data.ErrorPasswordNotSame = true
+			session.Values["errorPasswordNotSame"] = false
+			session.Save(r, w)
+		}
+		if err, ok := session.Values["errorUserExistsAlready"].(bool); ok && err {
+			fmt.Println("errorUserExistsAlready")
+			data.ErrorUserExistsAlready = true
+			session.Values["errorUserExistsAlready"] = false
+			session.Save(r, w)
+		}
+		if err, ok := session.Values["errorDuringSave"].(bool); ok && err {
+			fmt.Println("errorDuringSave")
+			data.ErrorDuringSave = true
+			session.Values["errorDuringSave"] = false
 			session.Save(r, w)
 		}
 
