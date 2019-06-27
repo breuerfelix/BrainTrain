@@ -1,0 +1,27 @@
+{
+  "name": "BrainTrain",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon --watch app --exec \"go run\" ./main.go"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/breuerfelix/card-learning-web.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/breuerfelix/card-learning-web/issues"
+  },
+  "homepage": "https://github.com/breuerfelix/card-learning-web#readme",
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
+}

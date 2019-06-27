@@ -7,6 +7,7 @@ import (
 	"log"
 	"net/http"
 
+	"github.com/breuerfelix/BrainTrain/app/models"
 	"github.com/gorilla/sessions"
 )
 
@@ -20,12 +21,14 @@ type Categorie struct {
 type GeneralData struct {
 	UserID              string
 	Username            string
+	User                models.User
 	Filename            string
 	LoggedIn            bool
 	NewPublicRegisters  int
 	NewPrivateRegisters int
 	ShowAnswer          bool
 	Categories          []Categorie
+	WrongPassword       bool
 }
 
 // PageData for templates
@@ -50,13 +53,30 @@ func HandleWithContext(controllerFunc controllerFunction, authRequired bool) fun
 		data := GeneralData{}
 
 		// Check if user is authenticated
-		if auth, ok := session.Values["authenticated"].(bool); authRequired && (!ok || !auth) {
-			http.Redirect(w, r, "/", http.StatusFound)
-			return
-		} else {
-			data.LoggedIn = true
-			data.UserID = session.Values["userID"].(string)
-			data.Username = session.Values["userName"].(string)
+		if authRequired {
+			if auth, ok := session.Values["authenticated"].(bool); ok && auth {
+				fmt.Println("logged in")
+				data.LoggedIn = true
+				data.UserID, _ = session.Values["userID"].(string)
+				data.Username, _ = session.Values["userName"].(string)
+
+				user := models.NewUser()
+				user.ID = data.UserID
+				user.GetByID()
+				data.User = *user
+
+			} else {
+				fmt.Println("not logged in")
+				http.Redirect(w, r, "/", http.StatusFound)
+				return
+			}
+		}
+
+		if wrong, ok := session.Values["wrongPassword"].(bool); ok && wrong {
+			fmt.Println("wrong password")
+			data.WrongPassword = true
+			session.Values["wrongPassword"] = false
+			session.Save(r, w)
 		}
 
 		pageData := PageData{

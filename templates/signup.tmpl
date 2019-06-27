@@ -15,20 +15,20 @@
             <div class="signup-wrapper">
                 <div class="signup">
 
-                    <form action="/signup-user" method="POST">
+                    <form action="/register" method="POST">
                     <!--form start-->
                         <div class="input-and-label">
                             <label for="name">
                                 Nutzername
                             </label>
-                            <input name="username" type="text" id="name" placeholder="maxmusterman">
+                            <input required name="username" type="text" id="name" placeholder="maxmusterman">
                         </div>
 
                         <div class="input-and-label">
                             <label for="email">
                                 E-Mail
                             </label>
-                            <input name="email" type="text" id="email" placeholder="muster@example.com">
+                            <input required name="email" type="text" id="email" placeholder="muster@example.com">
                         </div>
 
                         <div>&nbsp;</div>
@@ -37,20 +37,20 @@
                             <label for="password">
                                 Passwort
                             </label>
-                            <input name="password" type="password" id="password">
+                            <input required name="password" type="password" id="password">
                         </div>
 
                         <div class="input-and-label">
                             <label for="password-again">
                                 Passwort wiederholen
                             </label>
-                            <input name="passwordagain" type="text" id="password-again">
+                            <input required name="passwordAgain" type="text" id="password-again">
                         </div>
                         <!--form end-->
 
                         <!--agreement start-->
                         <div class="input-and-label content-agreement">
-                            <input name="agreement" type="checkbox"></input>
+                            <input required name="agreement" type="checkbox"></input>
                             <label class="content-text-signup">Ich habe die nicht vorhandene Dateschutzerklärung zur Kenntnis genommen.</label>
                         </div>
                         <!--agreement end-->
