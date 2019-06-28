@@ -44,7 +44,7 @@
                             <label for="password-again">
                                 Passwort wiederholen
                             </label>
-                            <input required name="passwordAgain" type="text" id="password-again">
+                            <input required name="passwordAgain" type="password" id="password-again">
                         </div>
                         <!--form end-->
 
@@ -68,27 +68,27 @@
             
     </div>
     <!--content-main end-->
-    {{if .ErrorPasswordNotSame}}
+    {{if .general.ErrorPasswordNotSame}}
     <script>
         alert('Die eingegebenen Passwörter sind nicht identisch!')
     </script>
     {{end}}
-    {{if .ErrorUserExistsAlready}}
+    {{if .general.ErrorUserExistsAlready}}
     <script>
         alert('Der Nutzer existiert bereits!')
     </script>
     {{end}}
-    {{if .ErrorDuringSave}}
+    {{if .general.ErrorDuringSave}}
     <script>
         alert('Beim Speichern ist ein Fehler aufgetreten!')
     </script>
     {{end}}
-    {{if .ErrorNameNotSet}}
+    {{if .general.ErrorNameNotSet}}
     <script>
         alert('Der Name muss angegeben werden!')
     </script>
     {{end}}
-    {{if .ErrorEmailNotSet}}
+    {{if .general.ErrorEmailNotSet}}
     <script>
         alert('Die EMail muss angegeben werden')
     </script>
