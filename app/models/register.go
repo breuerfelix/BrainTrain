@@ -14,12 +14,14 @@ type Register struct {
 	Private     bool   `json:"private"`
 	Owner       string `json:"owner"`
 	Cards       []Card `json:"cards"`
+	Misc        map[string]interface{}
 }
 
 // NewRegister constructor
 func NewRegister() *Register {
 	e := new(Register)
 	e.Type = "register"
+	e.Misc = make(map[string]interface{})
 	return e
 }
 

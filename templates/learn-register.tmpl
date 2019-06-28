@@ -68,37 +68,20 @@
                 <label>Titel</label>
             </div>
             <div class="col-xs-4 center" style="justify-content: left; font-weight: bold;">
-                {{.card.title}}
-            </div>
-            <div class="col-xs-5 center" style="justify-content: left;">
-                <div class="hexagon-small hexagon-counter hexagon-display-center{{if eq 0.0 .card.progress}} green{{end}}">
-                    <p>0</p>
-                </div>
-                <div class="hexagon-small hexagon-counter hexagon-display-center{{if eq 1.0 .card.progress}} green{{end}}">
-                    <p>1</p>
-                </div>
-                <div class="hexagon-small hexagon-counter hexagon-display-center{{if eq 2.0 .card.progress}} green{{end}}">
-                    <p>2</p>
-                </div>
-                <div class="hexagon-small hexagon-counter hexagon-display-center{{if eq 3.0 .card.progress}} green{{end}}">
-                    <p>3</p>
-                </div>
-                <div class="hexagon-small hexagon-counter hexagon-display-center{{if eq 4.0 .card.progress}} green{{end}}">
-                    <p>4</p>
-                </div>
+                {{.card.Title}}
             </div>
             <div class="col-label col-xs-3">
                 <label>Frage</label>
             </div>
             <div class="col-input col-xs-9">
-                <p class="card-text">{{.card.question}}</p>
+                <p class="card-text">{{.card.Question}}</p>
             </div>
             <div class="col-label col-xs-3">
                 <label>Antwort</label>
             </div>
             <div class="col-input col-xs-9">
             {{if .ShowAnswer}}
-                <p class="card-text">{{.card.answer}}</p>
+                <p class="card-text">{{.card.Answer}}</p>
             {{else}}
                 <a href="#" class="button big-button">Aufdecken</a>
             {{end}}

@@ -8,42 +8,26 @@ import (
 )
 
 // PrivateRegisters controller
-func PrivateRegisters(r *http.Request, data *GeneralData, pageData *PageData) {
+func PrivateRegisters(r *http.Request, w http.ResponseWriter, data *GeneralData, pageData *PageData) {
 	data.Filename = "private-registers"
 
+	fmt.Println(data.UserID)
+
 	// needs to query "user hase used but is public somehow" too
-	allPrivateRegisters, err := models.DB.QueryJSON(fmt.Sprintf(`{
-		"selector": {
-			"type": {
-				"$eq": "register"
-			},
-			"user": {
-				"$eq": "%s"
-			}
+	register := models.NewRegister()
+	allRegisters := register.GetAllRegister()
+
+	userRegisters := make([]models.Register, 0)
+
+	for _, register := range allRegisters {
+		if register.Owner == data.UserID {
+			register.Misc["CardCount"] = len(register.Cards)
+			userRegisters = append(userRegisters, register)
 		}
-	}`, data.UserID))
-
-	if err != nil {
-		panic(err)
 	}
 
-	for _, register := range allPrivateRegisters {
-		allCards, _ := models.DB.QueryJSON(fmt.Sprintf(`{
-			"selector": {
-				"type": {
-					"$eq": "card"
-				},
-				"register_id": {
-					"$eq": "%s"
-				}
-			}
-		}`, register["_id"]))
-
-		register["amountCards"] = len(allCards)
-		// TODO calculate
-		register["progress"] = "30%"
-	}
+	fmt.Println(userRegisters)
 
 	// append to template data
-	(*pageData)["registers"] = &allPrivateRegisters
+	(*pageData)["registers"] = &userRegisters
 }
