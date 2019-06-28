@@ -8,7 +8,7 @@ import (
 )
 
 // ViewRegister controller
-func ViewRegister(r *http.Request, data *GeneralData, pageData *PageData) {
+func ViewRegister(r *http.Request, w http.ResponseWriter, data *GeneralData, pageData *PageData) {
 	data.Filename = "view-register"
 	queryValues := r.URL.Query()
 	val, ok := queryValues["register"]

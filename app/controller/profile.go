@@ -8,7 +8,7 @@ type userStatistics struct {
 }
 
 // Profile controller
-func Profile(r *http.Request, data *GeneralData, pageData *PageData) {
+func Profile(r *http.Request, w http.ResponseWriter, data *GeneralData, pageData *PageData) {
 	data.Filename = "profile"
 
 	(*pageData)["stats"] = &userStatistics{

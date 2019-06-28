@@ -39,7 +39,7 @@ type GeneralData struct {
 // PageData for templates
 type PageData map[string]interface{}
 
-type controllerFunction func(*http.Request, *GeneralData, *PageData)
+type controllerFunction func(*http.Request, http.ResponseWriter, *GeneralData, *PageData)
 
 var key []byte
 var store *sessions.CookieStore
@@ -55,28 +55,29 @@ func HandleWithContext(controllerFunc controllerFunction, authRequired bool) fun
 	return func(w http.ResponseWriter, r *http.Request) {
 		session, _ := store.Get(r, "session")
 
+		// fmt.Println(fmt.Sprintf(`session is: %s`, string(session)))
+
 		data := GeneralData{}
 
+		if auth, ok := session.Values["authenticated"].(bool); ok && auth {
+			fmt.Println("logged in")
+			data.LoggedIn = true
+			data.UserID, _ = session.Values["userID"].(string)
+			data.Username, _ = session.Values["userName"].(string)
+
+			user := models.NewUser()
+			user.ID = data.UserID
+			user.GetByID()
+			data.User = *user
+
+			fmt.Println(user)
+		}
+
 		// Check if user is authenticated
-		if authRequired {
-			if auth, ok := session.Values["authenticated"].(bool); ok && auth {
-				fmt.Println("logged in")
-				data.LoggedIn = true
-				data.UserID, _ = session.Values["userID"].(string)
-				data.Username, _ = session.Values["userName"].(string)
-
-				user := models.NewUser()
-				user.ID = data.UserID
-				user.GetByID()
-				data.User = *user
-
-				fmt.Println(user)
-
-			} else {
-				fmt.Println("not logged in")
-				http.Redirect(w, r, "/", http.StatusFound)
-				return
-			}
+		if authRequired && !data.LoggedIn {
+			fmt.Println("not logged in")
+			http.Redirect(w, r, "/", http.StatusFound)
+			return
 		}
 
 		if err, ok := session.Values["wrongPassword"].(bool); ok && err {
@@ -122,7 +123,7 @@ func HandleWithContext(controllerFunc controllerFunction, authRequired bool) fun
 		}
 
 		initGeneralData(&data)
-		controllerFunc(r, &data, &pageData)
+		controllerFunc(r, w, &data, &pageData)
 
 		tmpl, err := template.ParseFiles("templates/layout.tmpl", fmt.Sprintf("templates/%s.tmpl", data.Filename))
 

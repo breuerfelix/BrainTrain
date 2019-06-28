@@ -38,33 +38,32 @@
 
     <div class="cat-content">
         {{range $register := $registers}}
-        {{if eq $register.user $userID}}
+        {{if eq $register.Owner $userID}}
         <div class="cat-card">
-            <div class="cc-title">{{$register.category}} > {{$register.subcategory}}</div>
+            <div class="cc-title">{{$register.Category}} > {{$register.SubCategory}}</div>
             <div class="cc-content">
                 <div class="ccc-header">
-                    <div class="ccc-title">{{$register.title}}</div>
+                    <div class="ccc-title">{{$register.Title}}</div>
                     <div class="ccc-badge">
                         <div class="card-counter">
                             <div class="hexagon hexagon-counter hexagon-display-center">
-                                <p>{{$register.amountCards}}</p>
+                                <p>{{$register.Misc.CardCount}}</p>
                                 <p class="super-small-text">Karten</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="ccc-content">
-                    {{$register.description}}
+                    {{$register.Description}}
                 </div>
 
                 <div class="ccc-visibility">Sichtbarkeit:<b style='padding-left:3em;'>
-                    {{if $register.private}}privat{{else}}öffentlich{{end}}
+                    {{if $register.Private}}privat{{else}}öffentlich{{end}}
                 </b></div>
-                <div class="ccc-progress">Fortschritt:<b style='padding-left:4em;'>{{$register.progress}}</b></div>
 
                 <div class="ccc-footer">
-                    <a href="/learn-register?register={{$register._id}}" class="button cpy content-button">Lernen</a>
-                    <a href='/edit-register?register={{$register._id}}' class="button cpy content-button success-button">Bearbeiten</a>
+                    <a href="/learn-register?register={{$register.ID}}" class="button cpy content-button">Lernen</a>
+                    <a href='/edit-register?register={{$register.ID}}' class="button cpy content-button success-button">Bearbeiten</a>
                     <a class="button cpy content-button danger-button"><img src='/static/images/icons/delete.svg' width='20px'></a>
                 </div>
             </div>
@@ -74,45 +73,5 @@
     </div>
     <!--category end-->
 
-    <!--category start-->
-    <div class="cat-title">
-        Gelernte Karteikästen anderer Nutzer
-    </div>
-
-    <div class="cat-content">
-        {{range $register := $registers}}
-        {{if ne eq $register.user $userID}}
-        <div class="cat-card">
-            <div class="cc-title">{{$register.category}} > {{$register.subcategory}}</div>
-            <div class="cc-content">
-                <div class="ccc-header">
-                    <div class="ccc-title">{{$register.title}}</div>
-                    <div class="ccc-badge">
-                        <div class="card-counter">
-                            <div class="hexagon hexagon-counter hexagon-display-center">
-                                <p>{{$register.amountCards}}</p>
-                                <p class="super-small-text">Karten</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="ccc-content">
-                    {{$register.description}}
-                </div>
-
-                <div class="ccc-visibility">Sichtbarkeit:<b style='padding-left:3em;'>
-                    {{if $register.private}}privat{{else}}öffentlich{{end}}
-                </b></div>
-                <div class="ccc-progress">Fortschritt:<b style='padding-left:4em;'>{{$register.progress}}</b></div>
-
-                <div class="ccc-footer">
-                    <a href="/learn-register?register={{$register._id}}" class="button content-button">Lernen</a>
-                </div>
-            </div>
-        </div>
-        {{end}}
-        {{end}}
-    </div>
-    <!--category end-->
 </div>
 {{end}}

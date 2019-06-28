@@ -13,7 +13,7 @@ type statistics struct {
 }
 
 // Index controller
-func Index(r *http.Request, data *GeneralData, pageData *PageData) {
+func Index(r *http.Request, w http.ResponseWriter, data *GeneralData, pageData *PageData) {
 	data.Filename = "index"
 
 	user := models.NewUser()

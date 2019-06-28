@@ -8,7 +8,7 @@ import (
 )
 
 // EditRegister controller
-func EditRegister(r *http.Request, data *GeneralData, pageData *PageData) {
+func EditRegister(r *http.Request, w http.ResponseWriter, data *GeneralData, pageData *PageData) {
 	data.Filename = "edit-register"
 	queryValues := r.URL.Query()
 	val, ok := queryValues["register"]
