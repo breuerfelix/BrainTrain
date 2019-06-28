@@ -13,14 +13,22 @@ func PrivateRegisters(r *http.Request, w http.ResponseWriter, data *GeneralData,
 
 	fmt.Println(data.UserID)
 
-	// needs to query "user hase used but is public somehow" too
+	// user has to learn his own registers at creation time
 	register := models.NewRegister()
 	allRegisters := register.GetAllRegister()
 
 	userRegisters := make([]models.Register, 0)
 
 	for _, register := range allRegisters {
-		if register.Owner == data.UserID {
+		found := false
+		for _, userReg := range data.User.Progress {
+			if userReg.Register == register.ID {
+				found = true
+				break
+			}
+		}
+
+		if found {
 			register.Misc["CardCount"] = len(register.Cards)
 			userRegisters = append(userRegisters, register)
 		}
