@@ -10,7 +10,7 @@
         </div>
         <div class="ch-subtitle-right">
             <div class="select">
-                <select name="sort">
+                <select name="sort" id="cat-selection">
                     <option value="0">Sortieren nach ...</option>
                     <option value="1">Naturwissenschaften</option>
                     <option value="2">Sprachen</option>
@@ -31,14 +31,14 @@
 
 <div class="categories">
     {{range $category := $categories}}
-    <div class="cat-title">
+    <div class="cat-title filter-ident" category={{$category}} display="block">
         {{$category}}
     </div>
 
-    <div class="cat-content">
+    <div class="cat-content filter-ident" category={{$category}} display="flex">
         {{range $register := $registers}}
         {{if eq $register.category $category}}
-        <div class="cat-card">
+        <div class="cat-card" cat="{{$register.category}}">
             <div class="cc-title">{{$register.subcategory}}</div>
             <div class="cc-content">
                 <div class="ccc-header">
@@ -64,6 +64,22 @@
         {{end}} 
     </div>
     {{end}}
-</div>
+    <script>
+        $('#cat-selection').on('change', function (e) {
+            var optionSelected = $("option:selected", this).html();
+            var valueSelected = this.value;
 
+            $('.filter-ident').each(function() {
+                var display = $(this).attr('display');
+                var cat = $(this).attr('category');
+                if (valueSelected == 0 || cat == optionSelected) {
+                    $(this).css('display', display);
+                    return;
+                }
+
+                $(this).css('display', 'none');
+            });
+        });
+    </script>
+</div>
 {{end}}

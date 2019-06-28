@@ -8,10 +8,11 @@ import (
 // User data structure
 type User struct {
 	Entity
-	Email    string `json:"email"`
-	Name     string `json:"name"`
-	Password string `json:"password"`
-	Date     string `json:"date"`
+	Email    string             `json:"email"`
+	Name     string             `json:"name"`
+	Password string             `json:"password"`
+	Date     string             `json:"date"`
+	Progress []RegisterProgress `json:"progress"`
 }
 
 // NewUser constructor
