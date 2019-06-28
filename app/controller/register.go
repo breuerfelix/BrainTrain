@@ -3,6 +3,7 @@ package controller
 import (
 	"fmt"
 	"net/http"
+	"time"
 
 	"github.com/breuerfelix/BrainTrain/app/models"
 )
@@ -53,6 +54,9 @@ func Register(w http.ResponseWriter, r *http.Request) {
 	user.Name = userName
 	user.Email = userEmail
 	user.Password = password
+	// set current date to user
+	dt := time.Now()
+	user.Date = dt.Format("02.01.2006")
 
 	if err := user.Insert(); err != nil {
 		session.Values["errorDuringSave"] = true
