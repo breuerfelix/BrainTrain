@@ -43,11 +43,13 @@ type controllerFunction func(*http.Request, http.ResponseWriter, *GeneralData, *
 
 var key []byte
 var store *sessions.CookieStore
+var categries []Categorie
 
 func init() {
 	key = make([]byte, 32)
 	rand.Read(key)
 	store = sessions.NewCookieStore(key)
+	initCategories()
 }
 
 // HandleWithContext func
@@ -154,6 +156,10 @@ func initGeneralData(data *GeneralData) {
 		data.NewPrivateRegisters = len(data.User.Progress)
 	}
 
+	data.Categories = categries
+}
+
+func initCategories() {
 	// init categories
 	nature := Categorie{}
 	nature.Name = "Naturwissenschaften"
@@ -220,7 +226,7 @@ func initGeneralData(data *GeneralData) {
 		"Sonstiges",
 	}
 
-	data.Categories = []Categorie{
+	categries = []Categorie{
 		nature,
 		languages,
 		society,

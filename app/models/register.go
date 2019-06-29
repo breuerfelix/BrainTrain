@@ -2,6 +2,7 @@ package models
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // Register data structure
@@ -66,4 +67,21 @@ func (e *Register) Get(attr string, value string) error {
 
 	e.parse(resp)
 	return nil
+}
+
+// Insert new register
+func (e *Register) Insert() string {
+	eMap := toMap(e)
+
+	// Delete _id and _rev from map, otherwise DB access will be denied (unauthorized)
+	delete(eMap, "_id")
+	delete(eMap, "_rev")
+
+	id, _, err := DB.Save(eMap, nil)
+
+	if err != nil {
+		fmt.Printf("[Add] error: %s", err)
+	}
+
+	return id
 }
