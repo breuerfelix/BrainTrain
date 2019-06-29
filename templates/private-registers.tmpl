@@ -43,7 +43,14 @@
             <div class="cc-title">{{$register.Category}} > {{$register.SubCategory}}</div>
             <div class="cc-content">
                 <div class="ccc-header">
-                    <div class="ccc-title">{{$register.Title}}</div>
+                    <div class="ccc-title">
+                        <a
+                            href="/view-register?register={{$register.ID}}"
+                            style="color: black;"
+                        >
+                            {{$register.Title}}
+                        </a>
+                    </div>
                     <div class="ccc-badge">
                         <div class="card-counter">
                             <div class="hexagon hexagon-counter hexagon-display-center">
@@ -85,7 +92,14 @@
             <div class="cc-title">{{$register.Category}} > {{$register.SubCategory}}</div>
             <div class="cc-content">
                 <div class="ccc-header">
-                    <div class="ccc-title">{{$register.Title}}</div>
+                    <div class="ccc-title">
+                        <a
+                            href="/view-register?register={{$register.ID}}"
+                            style="color: black;"
+                        >
+                            {{$register.Title}}
+                        </a>
+                    </div>
                     <div class="ccc-badge">
                         <div class="card-counter">
                             <div class="hexagon hexagon-counter hexagon-display-center">
