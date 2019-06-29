@@ -28,6 +28,7 @@
 
 {{ $categories := .categories }}
 {{ $registers := .registers }}
+{{ $general := .general }}
 
 <div class="categories">
     {{range $category := $categories}}
@@ -63,7 +64,9 @@
                     {{$register.description}}
                 </div>
                 <div class="ccc-footer">
+                    {{if $general.LoggedIn}}
                     <a href="/learn-register?register={{$register._id}}" class="button cpy content-button">Lernen</a>
+                    {{end}}
                 </div>
             </div>
         </div>

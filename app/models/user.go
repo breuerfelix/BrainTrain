@@ -82,3 +82,16 @@ func (e *User) Insert() error {
 
 	return err
 }
+
+// Update user
+func (e *User) Update() error {
+	eMap := toMap(e)
+
+	_, _, err := DB.Save(eMap, nil)
+
+	if err != nil {
+		fmt.Printf("[Add] error: %s", err)
+	}
+
+	return err
+}
