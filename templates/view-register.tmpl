@@ -50,16 +50,24 @@
         </div>
     </div>
 
-    {{ $activeCard := .card }}
+    {{ $activeCardID := .card }}
+    {{ $registerID := .register.ID }}
     <div class="col-xs-12 col-md-4 col-lg-3 cards">
         {{range $i, $card := .cards}}
-        {{if eq $card._id $activeCard._id}}
+        {{if eq $card.ID $activeCardID}}
         <div class="box box-active">
         {{else}}
         <div class="box">
         {{end}}
             <div class="card-pos"># {{$i}}</div>
-            <div class="card-title">{{$card.title}}</div>
+            <div class="card-title">
+                <a
+                    href="/view-register?register={{$registerID}}&card={{$card.ID}}"
+                    style="color: {{if eq $card.ID $activeCardID}}white{{else}}black{{end}};"
+                >
+                    {{$card.Title}}
+                </a>
+            </div>
         </div>
         {{end}}
     </div>
@@ -67,27 +75,29 @@
     <div class="col-xs-12 col-md-1 col-lg-1"></div>
 
     <div class="col-xs-12 col-md-7 col-lg-8">
+        {{range $i, $card := .cards}}
+        {{if eq $card.ID $activeCardID}}
         <div class="row box" style="padding-top: 15px; padding-bottom: 10px;">
             <div class="col-label col-xs-3">
                 <label>Titel</label>
             </div>
             <div class="col-xs-4 center" style="justify-content: left; font-weight: bold;">
-                {{$activeCard.title}}
+                {{$card.Title}}
             </div>
             <div class="col-xs-5 center" style="justify-content: left;">
-                <div class="hexagon-small hexagon-counter hexagon-display-center{{if eq 0.0 $activeCard.progress}} green{{end}}">
+                <div class="hexagon-small hexagon-counter hexagon-display-center green">
                     <p>0</p>
                 </div>
-                <div class="hexagon-small hexagon-counter hexagon-display-center{{if eq 1.0 $activeCard.progress}} green{{end}}">
+                <div class="hexagon-small hexagon-counter hexagon-display-center">
                     <p>1</p>
                 </div>
-                <div class="hexagon-small hexagon-counter hexagon-display-center{{if eq 2.0 $activeCard.progress}} green{{end}}">
+                <div class="hexagon-small hexagon-counter hexagon-display-center">
                     <p>2</p>
                 </div>
-                <div class="hexagon-small hexagon-counter hexagon-display-center{{if eq 3.0 $activeCard.progress}} green{{end}}">
+                <div class="hexagon-small hexagon-counter hexagon-display-center">
                     <p>3</p>
                 </div>
-                <div class="hexagon-small hexagon-counter hexagon-display-center{{if eq 4.0 $activeCard.progress}} green{{end}}">
+                <div class="hexagon-small hexagon-counter hexagon-display-center">
                     <p>4</p>
                 </div>
             </div>
@@ -95,15 +105,17 @@
                 <label>Frage</label>
             </div>
             <div class="col-input col-xs-9">
-                <p class="card-text">{{$activeCard.question}}</p>
+                <p class="card-text">{{$card.Question}}</p>
             </div>
             <div class="col-label col-xs-3">
                 <label>Antwort</label>
             </div>
             <div class="col-input col-xs-9">
-                <p class="card-text">{{$activeCard.answer}}</p>
+                <p class="card-text">{{$card.Answer}}</p>
             </div>
         </div>
+        {{end}}
+        {{end}}
     </div>
 </div>
 {{end}}
