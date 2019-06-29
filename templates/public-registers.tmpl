@@ -38,34 +38,34 @@
 
     <div class="cat-content filter-ident" category={{$category}} display="flex">
         {{range $register := $registers}}
-        {{if eq $register.category $category}}
+        {{if eq $register.Category $category}}
         <div class="cat-card">
-            <div class="cc-title">{{$register.subcategory}}</div>
+            <div class="cc-title">{{$register.SubCategory}}</div>
             <div class="cc-content">
                 <div class="ccc-header">
                     <div class="ccc-title">
                         <a
-                            href="/view-register?register={{$register._id}}"
+                            href="/view-register?register={{$register.ID}}"
                             style="color: black;"
                         >
-                            {{$register.title}}
+                            {{$register.Title}}
                         </a>
                     </div>
                     <div class="ccc-badge">
                         <div class="card-counter">
                             <div class="hexagon hexagon-counter hexagon-display-center">
-                                <p>{{$register.amountCards}}</p>
+                                <p>{{$register.Misc.amountCards}}</p>
                                 <p class="super-small-text">Karten</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="ccc-content">
-                    {{$register.description}}
+                    {{$register.Description}}
                 </div>
                 <div class="ccc-footer">
                     {{if $general.LoggedIn}}
-                    <a href="/learn-register?register={{$register._id}}" class="button cpy content-button">Lernen</a>
+                    <a href="/learn-register?register={{$register.ID}}" class="button cpy content-button">Lernen</a>
                     {{end}}
                 </div>
             </div>
