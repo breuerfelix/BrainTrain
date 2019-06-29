@@ -1,7 +1,6 @@
 package controller
 
 import (
-	"fmt"
 	"net/http"
 
 	"github.com/breuerfelix/BrainTrain/app/models"
@@ -22,34 +21,21 @@ func EditRegister(r *http.Request, w http.ResponseWriter, data *GeneralData, pag
 	register.ID = registerID
 	register.GetByID()
 
-	if register.Owner == data.UserID {
+	if register.Owner != data.UserID {
 		panic("not allowed !! this is not your register!")
 	}
 
-	allCards, _ := models.DB.QueryJSON(fmt.Sprintf(`{
-		"selector": {
-			"type": {
-				"$eq": "card"
-			},
-			"register_id": {
-				"$eq": "%s"
-			}
-		}
-	}`, register.ID))
-
-	(*pageData)["amountCards"] = len(allCards)
-	(*pageData)["cards"] = allCards
+	(*pageData)["amountCards"] = len(register.Cards)
+	(*pageData)["cards"] = register.Cards
 	(*pageData)["register"] = register
 	(*pageData)["card"] = nil
-	// TODO calculate
-	(*pageData)["progress"] = 30
 
-	if len(allCards) > 0 {
-		(*pageData)["card"] = allCards[0]
+	if len(register.Cards) > 0 {
+		(*pageData)["card"] = register.Cards[0].ID
 	}
 
 	// if user wants a specific
 	if val, ok := queryValues["card"]; ok {
-		(*pageData)["card"] = val
+		(*pageData)["card"] = val[0]
 	}
 }
