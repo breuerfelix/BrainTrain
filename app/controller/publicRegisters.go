@@ -1,7 +1,6 @@
 package controller
 
 import (
-	"fmt"
 	"net/http"
 
 	"github.com/breuerfelix/BrainTrain/app/models"
@@ -11,27 +10,21 @@ import (
 func PublicRegisters(r *http.Request, w http.ResponseWriter, data *GeneralData, pageData *PageData) {
 	data.Filename = "public-registers"
 
-	allEntities, err := models.DB.QueryJSON(`{
-		"selector": {
-			"type": {
-				"$eq": "register"
-			},
-			"private": {
-				"$eq": false
-			}
-		}
-	}`)
+	tempRegisters := models.NewRegister().GetAllRegister()
+	allRegister := make([]models.Register, 0)
 
-	if err != nil {
-		panic(err)
+	for _, reg := range tempRegisters {
+		if !reg.Private {
+			allRegister = append(allRegister, reg)
+		}
 	}
 
 	// filter out categories which are not used
 	categories := make([]string, 0)
 	for _, cat := range data.Categories {
 		found := false
-		for _, reg := range allEntities {
-			if reg["category"] == cat.Name {
+		for _, reg := range allRegister {
+			if reg.Category == cat.Name {
 				found = true
 				break
 			}
@@ -43,22 +36,11 @@ func PublicRegisters(r *http.Request, w http.ResponseWriter, data *GeneralData, 
 	}
 
 	// append number of cards for each register
-	for _, register := range allEntities {
-		allCards, _ := models.DB.QueryJSON(fmt.Sprintf(`{
-			"selector": {
-				"type": {
-					"$eq": "card"
-				},
-				"register_id": {
-					"$eq": "%s"
-				}
-			}
-		}`, register["_id"]))
-
-		register["amountCards"] = len(allCards)
+	for _, register := range allRegister {
+		register.Misc["amountCards"] = len(register.Cards)
 	}
 
 	// append to template data
-	(*pageData)["registers"] = &allEntities
+	(*pageData)["registers"] = &allRegister
 	(*pageData)["categories"] = &categories
 }
