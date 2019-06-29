@@ -1,6 +1,7 @@
 package controller
 
 import (
+	"math/rand"
 	"net/http"
 
 	"github.com/breuerfelix/BrainTrain/app/models"
@@ -9,6 +10,7 @@ import (
 // LearnRegister controller
 func LearnRegister(r *http.Request, w http.ResponseWriter, data *GeneralData, pageData *PageData) {
 	data.Filename = "learn-register"
+	// get register
 	queryValues := r.URL.Query()
 	val, ok := queryValues["register"]
 
@@ -25,54 +27,27 @@ func LearnRegister(r *http.Request, w http.ResponseWriter, data *GeneralData, pa
 		http.Redirect(w, r, "/public-registers", http.StatusFound)
 	}
 
-	allCards := register.Cards
-
-	/*
-		cardsZero := 0
-		cardsOne := 0
-		cardsTwo := 0
-		cardsThree := 0
-		cardsFour := 0
-
-		for _, card := range allCards {
-			switch card["progress"] {
-			case 0.0:
-				cardsZero++
-			case 1.0:
-				cardsOne++
-			case 2.0:
-				cardsTwo++
-			case 3.0:
-				cardsThree++
-			case 4.0:
-				cardsFour++
-			}
+	found := false
+	for _, prog := range data.User.Progress {
+		if prog.Register == register.ID {
+			found = true
 		}
+	}
 
-		(*pageData)["cardsZero"] = cardsZero
-		(*pageData)["cardsOne"] = cardsOne
-		(*pageData)["cardsTwo"] = cardsTwo
-		(*pageData)["cardsThree"] = cardsThree
-		(*pageData)["cardsFour"] = cardsFour
+	if !found {
+		// save to DB
+		newProgress := models.RegisterProgress{}
+		newProgress.Register = register.ID
+		data.User.Progress = append(data.User.Progress, newProgress)
+		data.User.Update()
+	}
 
-		(*pageData)["amountCards"] = len(allCards)
-		(*pageData)["cards"] = allCards
-		(*pageData)["register"] = register
-		(*pageData)["card"] = nil
-		// TODO calculate
-		(*pageData)["progress"] = 30
-
-	*/
+	allCards := register.Cards
 
 	(*pageData)["register"] = register
 	(*pageData)["amountCards"] = len(allCards)
 
 	if len(allCards) > 0 {
-		(*pageData)["card"] = allCards[0]
+		(*pageData)["card"] = allCards[rand.Intn(len(allCards))]
 	}
-
-	// if user wants a specific
-	// if val, ok := queryValues["card"]; ok {
-	//	(*pageData)["card"] = val
-	//}
 }

@@ -67,8 +67,6 @@ func HandleWithContext(controllerFunc controllerFunction, authRequired bool) fun
 			user.ID = data.UserID
 			user.GetByID()
 			data.User = *user
-
-			fmt.Println(user)
 		}
 
 		// Check if user is authenticated

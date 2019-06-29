@@ -30,7 +30,7 @@
                     Fortschritt
                 </div>
                 <div class="ov-subtitle">
-                    {{.progress}} %
+                    - %
                 </div>
             </div>
             <div class="col-xs">
@@ -44,11 +44,11 @@
                 </div>
                 <div class="ov-subtitle cus-row">
                     <div class="cus-col first">Karten</div>
-                    <div class="cus-col">{{.cardsZero}}</div>
-                    <div class="cus-col">{{.cardsOne}}</div>
-                    <div class="cus-col">{{.cardsTwo}}</div>
-                    <div class="cus-col">{{.cardsThree}}</div>
-                    <div class="cus-col">{{.cardsFour}}</div>
+                    <div class="cus-col">-</div>
+                    <div class="cus-col">-</div>
+                    <div class="cus-col">-</div>
+                    <div class="cus-col">-</div>
+                    <div class="cus-col">-</div>
                 </div>
             </div>
             <div class="col-xs center">
@@ -67,7 +67,7 @@
             <div class="col-label col-xs-3">
                 <label>Titel</label>
             </div>
-            <div class="col-xs-4 center" style="justify-content: left; font-weight: bold;">
+            <div class="col-xs-9 center" style="justify-content: left; font-weight: bold;">
                 {{.card.Title}}
             </div>
             <div class="col-label col-xs-3">
@@ -80,23 +80,29 @@
                 <label>Antwort</label>
             </div>
             <div class="col-input col-xs-9">
-            {{if .ShowAnswer}}
-                <p class="card-text">{{.card.Answer}}</p>
-            {{else}}
-                <a href="#" class="button big-button">Aufdecken</a>
-            {{end}}
+                <p class="card-text eventShow" style="display: none;">{{.card.Answer}}</p>
+                <a href="#" class="button big-button card-text eventHide" id="btnShow">
+                    Aufdecken
+                </a>
             </div>
             <div class="col-xs-12 buttons center">
-            {{if .ShowAnswer}}
-                <a href="#" class="button success-button">Richtig</a>
-                <a href="#" class="button danger-button">Falsch</a>
-            {{else}}
-                <a href="#" class="button">Überspringen</a>
-            {{end}}
+                <a href="/learn-register?register={{.register.ID}}" class="button success-button eventShow" style="display: none;">Richtig</a>
+                <a href="/learn-register?register={{.register.ID}}" class="button danger-button eventShow" style="display: none;">Falsch</a>
+                <a href="/learn-register?register={{.register.ID}}" class="button eventHide">Überspringen</a>
             </div>
         </div>
     </div>
 
     <div class="col-xs-12 col-md-1 col-lg-2"></div>
+    <script>
+        $('#btnShow').click(function (e) {
+            $('.eventHide').each(function() {
+                $(this).css('display', 'none');
+            });
+            $('.eventShow').each(function() {
+                $(this).css('display', 'block');
+            });
+        });
+    </script>
 </div>
 {{end}}
