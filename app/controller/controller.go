@@ -55,8 +55,6 @@ func HandleWithContext(controllerFunc controllerFunction, authRequired bool) fun
 	return func(w http.ResponseWriter, r *http.Request) {
 		session, _ := store.Get(r, "session")
 
-		// fmt.Println(fmt.Sprintf(`session is: %s`, string(session)))
-
 		data := GeneralData{}
 
 		if auth, ok := session.Values["authenticated"].(bool); ok && auth {
@@ -93,24 +91,28 @@ func HandleWithContext(controllerFunc controllerFunction, authRequired bool) fun
 			session.Values["wrongPassword"] = false
 			session.Save(r, w)
 		}
+
 		if err, ok := session.Values["errorEmailNotSet"].(bool); ok && err {
 			fmt.Println("errorEmailNotSet")
 			data.ErrorEmailNotSet = true
 			session.Values["errorNameNotSet"] = false
 			session.Save(r, w)
 		}
+
 		if err, ok := session.Values["errorPasswordNotSame"].(bool); ok && err {
 			fmt.Println("errorPasswordNotSame")
 			data.ErrorPasswordNotSame = true
 			session.Values["errorPasswordNotSame"] = false
 			session.Save(r, w)
 		}
+
 		if err, ok := session.Values["errorUserExistsAlready"].(bool); ok && err {
 			fmt.Println("errorUserExistsAlready")
 			data.ErrorUserExistsAlready = true
 			session.Values["errorUserExistsAlready"] = false
 			session.Save(r, w)
 		}
+
 		if err, ok := session.Values["errorDuringSave"].(bool); ok && err {
 			fmt.Println("errorDuringSave")
 			data.ErrorDuringSave = true
@@ -136,6 +138,24 @@ func HandleWithContext(controllerFunc controllerFunction, authRequired bool) fun
 }
 
 func initGeneralData(data *GeneralData) {
+	allRegister := models.NewRegister().GetAllRegister()
+
+	publicRegisters := 0
+
+	for _, register := range allRegister {
+		if !register.Private {
+			publicRegisters++
+		}
+	}
+
+	if publicRegisters != 0 {
+		data.NewPublicRegisters = publicRegisters
+	}
+
+	if data.User.ID != "" {
+		data.NewPrivateRegisters = len(data.User.Progress)
+	}
+
 	// init categories
 	nature := Categorie{}
 	nature.Name = "Naturwissenschaften"
