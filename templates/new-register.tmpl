@@ -11,13 +11,13 @@
     <div class="box white-bg col-xs-12 col-sm-11 col-md-10 col-lg-7">
         <div class="box-title text-big">Allgemeine Daten</div>
 
-        <form>
+        <form action="/create-register" method="POST">
             <div class="row">
                 <div class="col-label col-xs-4">
                     <label for="name">Titel</label>
                 </div>
                 <div class="col-input col-xs-8">
-                    <input type="text" id="name">
+                    <input required type="text" id="name" name="title">
                 </div>
 
                 <div class="col-label col-xs-4">
@@ -25,9 +25,8 @@
                 </div>
                 <div class="col-input col-xs-8">
                     <div class="select">
-                        <select name="sort">
-                            <option value="0"></option>
-                            {{range .Categories}}
+                        <select required name="category">
+                            {{range .general.Categories}}
                             <optgroup label="{{.Name}}">
                                 {{range .SubCategories}}
                                 <option value="{{.}}">{{.}}</option>
@@ -42,21 +41,19 @@
                     <label for="description">Beschreibung</label>
                 </div>
                 <div class="col-input col-xs-8">
-                    <textarea type="text" id="description" rows="6"></textarea>
+                    <textarea name="description" required type="text" id="description" rows="6"></textarea>
                 </div>
 
                 <div class="col-label col-xs-4">
                     <label>Sichtbarkeit</label>
                 </div>
                 <div class="col-input col-xs-8">
-                    <input type="radio">
-                    <label>öffentlich</label>
-                    <input type="radio">
-                    <label>privat</label>
+                    <input type="checkbox" name="private">
+                    <label style="margin-left: 10px">privat</label>
                 </div>
 
                 <div class="col-xs-12 col-button">
-                    <a href="/edit-register" class="button">Speichern und weiter</a>
+                    <button type="submit" class="button">Speichern und weiter</button>
                 </div>
 
             </div>
