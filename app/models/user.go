@@ -13,6 +13,7 @@ type User struct {
 	Password string             `json:"password"`
 	Date     string             `json:"date"`
 	Progress []RegisterProgress `json:"progress"`
+	Picture  string             `json:"picture"`
 }
 
 // NewUser constructor
@@ -92,6 +93,41 @@ func (e *User) Update() error {
 	if err != nil {
 		fmt.Printf("[Add] error: %s", err)
 	}
+
+	return err
+}
+
+func (e *User) Delete() error {
+	register := NewRegister()
+
+	registers := register.GetAllRegister()
+
+	userRegisters := make([]Register, 0)
+
+	for _, element := range registers {
+		if element.Owner == e.ID {
+			userRegisters = append(userRegisters, element)
+		}
+	}
+
+	allUsers := e.GetAllUser()
+
+	for _, otherUser := range allUsers {
+		for idx, otherUserReg := range otherUser.Progress {
+			registerID := otherUserReg.Register
+			for _, delReg := range userRegisters {
+				if delReg.ID == registerID {
+					s := otherUser.Progress
+					i := idx
+					s[len(s)-1], s[i] = s[i], s[len(s)-1]
+					otherUser.Progress = s[:len(s)-1]
+				}
+			}
+		}
+		otherUser.Update()
+	}
+
+	err := DB.Delete(e.ID)
 
 	return err
 }

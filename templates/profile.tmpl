@@ -12,11 +12,16 @@
             <div class="content-block">
                 <div class="profile-details-wrapper">
                     <div class="profile-image-wrapper">
-                        <span class="profile-dummy"></span>
+                        {{if .general.HasPicture}}
+                            <img class="profile-image" src="{{.general.UserPictureURL}}"/>
+                        {{else}}
+                            <span class="profile-dummy"></span>
+                        {{end}}
                     </div>
                     
                     <div class="edit-button">
-                        <a href="#" class="button cpy">Edit</a>
+                        <input type="file" name="file" id="file" style="display: none;" onchange="encodeImageFileAsURL(this)"/>
+                        <label for="file" class="button cpy">Edit</label>
                     </div>
                     <p class="name">{{.general.User.Name}}</p>
                     <p class="email">{{.general.User.Email}}</p>
@@ -52,46 +57,72 @@
                     </div>
 
                     <!--form start-->
-                    <div class="form">
+                    <form action="/change-profile" method="POST" class="form">
+                    
                         <div class="content-row">
                             <div class="row-name">Neue Email:</div>
                             <div class="row-value">
-                                <input type="text">
+                                <input type="text" name="newEmail">
                             </div>
                         </div>
                         <div class="content-row">
                             <div class="row-name">Altes Passwort:</div>
                             <div class="row-value">
-                                <input type="text">
+                                <input type="text" name="password">
                             </div>
                         </div>
                         <div class="content-row">
                             <div class="row-name">Neues Passwort:</div>
                             <div class="row-value">
-                                <input type="text">
+                                <input type="text" name="newPassword">
                             </div>
                         </div>
                         <div class="content-row">
                             <div class="row-name">Passwort wiederholen:</div>
                             <div class="row-value">
-                                <input type="text">
+                                <input type="text" name="newPasswordAgain">
                             </div>
                         </div>
-                    </div>
+
+                        <div class="button-wrapper">
+                            <button type="submit" class="button">Speichern</button>
+                            <a href="/delete-profil" class="button danger-button">
+                                <img src="/static/images/icons/delete.svg" width="20px">
+                            </a>
+                        </div>
+                    </form>
                     <!--form end-->
-
-                    <div class="button-wrapper">
-                        <a href="#" class="button">Speichern</a>
-                        <a href="/delete-profil.html" class="button danger-button">
-                            <img src="/static/images/icons/delete.svg" width="20px">
-                        </a>
-                    </div>
-                    
-
                 </div>
             </div>
         </div>
     </div>
         
 </div>
+
+{{if .SuccessUpdateProfile}}
+<script>
+    alert('Profildaten erfolgreich geändert!')
+</script>
+{{end}}
+
+{{if .general.ErrorDuringSave}}
+<script>
+    alert('Beim Speichern ist ein Fehler aufgetreten!')
+</script>
+{{end}}
+
+<script>
+    function encodeImageFileAsURL(element) {
+        var file = element.files[0];
+        var reader = new FileReader();
+        reader.onloadend = function() {
+            console.log('RESULT', reader.result)
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", `${location.origin}/upload-profile-picture`, true);
+            xhr.setRequestHeader('Content-Type', 'text/plain');
+            xhr.send(reader.result);
+        }
+        reader.readAsDataURL(file);
+    }
+</script>
 {{end}}

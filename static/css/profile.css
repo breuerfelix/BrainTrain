@@ -147,6 +147,12 @@
     display: inline-block;
 }
 
+.profile-image {
+    max-width: 6rem;
+    height: auto;
+    margin: 1rem
+}
+
 .edit-button {
     margin-top: 5px;
 }
