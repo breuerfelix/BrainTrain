@@ -110,24 +110,21 @@ func (e *User) Delete() error {
 		}
 	}
 
-	fmt.Printf("to be delete user registers %s\n", userRegisters)
-
 	allUsers := e.GetAllUser()
 
-	fmt.Printf("all users: %s\n", allUsers)
 	for _, otherUser := range allUsers {
-		fmt.Printf("some user progress: %s\n", otherUser.Progress)
-		for idx, otherUserReg := range otherUser.Progress {
-			registerID := otherUserReg.Register
+		copyOfProgress := append(otherUser.Progress[:0:0], otherUser.Progress...)
+		for i := len(otherUser.Progress)-1; i >= 0; i-- {
+			registerID := otherUser.Progress[i].Register
 			for _, delReg := range userRegisters {
 				if delReg.ID == registerID {
-					s := otherUser.Progress
-					i := idx
-					s[len(s)-1], s[i] = s[i], s[len(s)-1]
-					otherUser.Progress = s[:len(s)-1]
+					s := copyOfProgress
+					s[i] = s[len(s)-1]
+					copyOfProgress = s[:len(s)-1]
 				}
 			}
 		}
+		otherUser.Progress = copyOfProgress
 		otherUser.Update()
 	}
 
