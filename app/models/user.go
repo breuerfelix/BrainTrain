@@ -110,9 +110,13 @@ func (e *User) Delete() error {
 		}
 	}
 
+	fmt.Printf("to be delete user registers %s\n", userRegisters)
+
 	allUsers := e.GetAllUser()
 
+	fmt.Printf("all users: %s\n", allUsers)
 	for _, otherUser := range allUsers {
+		fmt.Printf("some user progress: %s\n", otherUser.Progress)
 		for idx, otherUserReg := range otherUser.Progress {
 			registerID := otherUserReg.Register
 			for _, delReg := range userRegisters {
@@ -125,6 +129,10 @@ func (e *User) Delete() error {
 			}
 		}
 		otherUser.Update()
+	}
+
+	for _, reg := range userRegisters {
+		reg.Delete()
 	}
 
 	err := DB.Delete(e.ID)
