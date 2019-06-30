@@ -85,3 +85,16 @@ func (e *Register) Insert() string {
 
 	return id
 }
+
+// Update register
+func (e *Register) Update() error {
+	eMap := toMap(e)
+
+	_, _, err := DB.Save(eMap, nil)
+
+	if err != nil {
+		fmt.Printf("[Add] error: %s", err)
+	}
+
+	return err
+}

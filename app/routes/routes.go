@@ -24,6 +24,10 @@ func Init() {
 	http.HandleFunc("/logout", controller.Logout)
 	http.HandleFunc("/register", controller.Register)
 	http.HandleFunc("/create-register", controller.CreateRegister)
+	http.HandleFunc("/update-register", controller.UpdateRegister)
+	http.HandleFunc("/new-card", controller.NewCard)
+	http.HandleFunc("/edit-card", controller.EditCard)
+	http.HandleFunc("/delete-card", controller.DeleteCard)
 
 	// file server
 	fs := http.FileServer(http.Dir("static/"))
