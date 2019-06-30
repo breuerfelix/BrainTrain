@@ -13,6 +13,7 @@ type User struct {
 	Password string             `json:"password"`
 	Date     string             `json:"date"`
 	Progress []RegisterProgress `json:"progress"`
+	Picture  string             `json:"picture"`
 }
 
 // NewUser constructor

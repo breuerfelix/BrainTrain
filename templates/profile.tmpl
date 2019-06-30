@@ -12,11 +12,16 @@
             <div class="content-block">
                 <div class="profile-details-wrapper">
                     <div class="profile-image-wrapper">
-                        <span class="profile-dummy"></span>
+                        {{if .hasPicture}}
+                            <img src="{{.general.User.Picture}}"/>
+                        {{else}}
+                            <span class="profile-dummy"></span>
+                        {{end}}
                     </div>
                     
                     <div class="edit-button">
-                        <a href="#" class="button cpy">Edit</a>
+                        <input type="file" name="file" id="file" style="display: none;" onchange="encodeImageFileAsURL(this)"/>
+                        <label for="file" class="button cpy">Edit</label>
                     </div>
                     <p class="name">{{.general.User.Name}}</p>
                     <p class="email">{{.general.User.Email}}</p>
@@ -94,4 +99,19 @@
     </div>
         
 </div>
+
+<script>
+    function encodeImageFileAsURL(element) {
+        var file = element.files[0];
+        var reader = new FileReader();
+        reader.onloadend = function() {
+            console.log('RESULT', reader.result)
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", `${location.origin}/upload-profile-picture`, true);
+            xhr.setRequestHeader('Content-Type', 'text/plain');
+            xhr.send(reader.result);
+        }
+        reader.readAsDataURL(file);
+    }
+</script>
 {{end}}
