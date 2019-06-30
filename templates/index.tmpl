@@ -5,4 +5,11 @@
         <p class="content-text-welcome text-big">Hier haben sich <b>{{.stats.Users}} Nutzer</b> angemeldet und zusammen <b>{{.stats.CardsTotal}} Lernkarten</b> in <b>{{.stats.RegistersTotal}} Karteien</b> erstellt.</p> 
     </div>
 </div>
+
+{{if .general.SuccessDeleteProfile}}
+<script>
+    alert('Profil erfolgreich gelöscht.')
+</script>
+{{end}}
+
 {{end}}

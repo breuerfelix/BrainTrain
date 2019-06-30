@@ -13,7 +13,7 @@
                 <div class="profile-details-wrapper">
                     <div class="profile-image-wrapper">
                         {{if .hasPicture}}
-                            <img src="{{.general.User.Picture}}"/>
+                            <img class="profile-image" src="{{.pictureURL}}"/>
                         {{else}}
                             <span class="profile-dummy"></span>
                         {{end}}
@@ -57,48 +57,59 @@
                     </div>
 
                     <!--form start-->
-                    <div class="form">
+                    <form action="/change-profile" method="POST" class="form">
+                    
                         <div class="content-row">
                             <div class="row-name">Neue Email:</div>
                             <div class="row-value">
-                                <input type="text">
+                                <input type="text" name="newEmail">
                             </div>
                         </div>
                         <div class="content-row">
                             <div class="row-name">Altes Passwort:</div>
                             <div class="row-value">
-                                <input type="text">
+                                <input type="text" name="password">
                             </div>
                         </div>
                         <div class="content-row">
                             <div class="row-name">Neues Passwort:</div>
                             <div class="row-value">
-                                <input type="text">
+                                <input type="text" name="newPassword">
                             </div>
                         </div>
                         <div class="content-row">
                             <div class="row-name">Passwort wiederholen:</div>
                             <div class="row-value">
-                                <input type="text">
+                                <input type="text" name="newPasswordAgain">
                             </div>
                         </div>
-                    </div>
+
+                        <div class="button-wrapper">
+                            <button type="submit" class="button">Speichern</button>
+                            <a href="/delete-profil" class="button danger-button">
+                                <img src="/static/images/icons/delete.svg" width="20px">
+                            </a>
+                        </div>
+                    </form>
                     <!--form end-->
-
-                    <div class="button-wrapper">
-                        <a href="#" class="button">Speichern</a>
-                        <a href="/delete-profil.html" class="button danger-button">
-                            <img src="/static/images/icons/delete.svg" width="20px">
-                        </a>
-                    </div>
-                    
-
                 </div>
             </div>
         </div>
     </div>
         
 </div>
+
+{{if .SuccessUpdateProfile}}
+<script>
+    alert('Profildaten erfolgreich geändert!')
+</script>
+{{end}}
+
+{{if .general.ErrorDuringSave}}
+<script>
+    alert('Beim Speichern ist ein Fehler aufgetreten!')
+</script>
+{{end}}
 
 <script>
     function encodeImageFileAsURL(element) {

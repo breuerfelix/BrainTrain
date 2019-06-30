@@ -2,6 +2,7 @@ package controller
 
 import (
 	"net/http"
+	"html/template"
 )
 
 type userStatistics struct {
@@ -16,6 +17,7 @@ func Profile(r *http.Request, w http.ResponseWriter, data *GeneralData, pageData
 
 	if data.User.Picture != "" {
 		(*pageData)["hasPicture"] = true
+		(*pageData)["pictureURL"] = template.URL(data.User.Picture)
 	}
 
 	(*pageData)["stats"] = &userStatistics{

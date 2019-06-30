@@ -147,6 +147,12 @@
     display: inline-block;
 }
 
+.profile-image {
+    max-width: 6rem;
+    height: auto;
+    margin: 1rem
+}
+
 .edit-button {
     margin-top: 5px;
 }
@@ -278,13 +284,4 @@
     color: white;
     padding: 0 15px;
     margin-left: 15px;
-}
-
-.fileinput {
-	width: 0.1px;
-	height: 0.1px;
-	opacity: 0;
-	overflow: hidden;
-	position: absolute;
-	z-index: -1;
 }
