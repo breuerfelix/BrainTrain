@@ -98,3 +98,14 @@ func (e *Register) Update() error {
 
 	return err
 }
+
+// Delete register
+func (e *Register) Delete() error {
+	err := DB.Delete(e.ID)
+
+	if err != nil {
+		fmt.Printf("[Add] error: %s", err)
+	}
+
+	return err
+}
