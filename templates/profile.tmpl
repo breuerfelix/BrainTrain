@@ -12,8 +12,8 @@
             <div class="content-block">
                 <div class="profile-details-wrapper">
                     <div class="profile-image-wrapper">
-                        {{if .hasPicture}}
-                            <img class="profile-image" src="{{.pictureURL}}"/>
+                        {{if .general.HasPicture}}
+                            <img class="profile-image" src="{{.general.UserPictureURL}}"/>
                         {{else}}
                             <span class="profile-dummy"></span>
                         {{end}}

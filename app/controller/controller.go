@@ -21,6 +21,8 @@ type Categorie struct {
 type GeneralData struct {
 	UserID                 string
 	Username               string
+	HasPicture             bool
+	UserPictureURL         template.URL
 	User                   models.User
 	Filename               string
 	LoggedIn               bool
@@ -73,6 +75,13 @@ func HandleWithContext(controllerFunc controllerFunction, authRequired bool) fun
 			user.ID = data.UserID
 			user.GetByID()
 			data.User = *user
+
+			if user.Picture != "" {
+				data.HasPicture = true
+			}
+			
+			data.UserPictureURL = template.URL(user.Picture)
+
 		}
 
 		// Check if user is authenticated
