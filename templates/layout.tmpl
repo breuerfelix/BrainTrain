@@ -147,7 +147,7 @@
             <button type="submit" class="button cpy">Login</button>
             <a href="/signup" class="white small">Registrieren</a>
         </form>
-        {{if .WrongPassword}}
+        {{if .ErrorWrongPassword}}
         <script>
             alert('Das eingegebene Passwort ist falsch!')
         </script>

@@ -25,6 +25,8 @@ func Init() {
 	http.HandleFunc("/register", controller.Register)
 	http.HandleFunc("/create-register", controller.CreateRegister)
 	http.HandleFunc("/upload-profile-picture", controller.UploadProfilePicture)
+	http.HandleFunc("/change-profile", controller.ChangeProfile)
+	http.HandleFunc("/delete-profil", controller.DeleteProfile)
 
 	// file server
 	fs := http.FileServer(http.Dir("static/"))
