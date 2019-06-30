@@ -92,3 +92,11 @@ func (e *Entity) getBy(attr string, value string) (map[string]interface{}, error
 
 	return nil, nil
 }
+
+func (e *Entity) Delete() error {
+	fmt.Printf("delete called on %s", e.ID)
+
+	err := DB.Delete(e.ID)
+
+	return err
+}

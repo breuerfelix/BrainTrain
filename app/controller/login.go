@@ -25,7 +25,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	session.Values["wrongPassword"] = true
+	session.Values["errorWrongPassword"] = true
 	session.Save(r, w)
 	http.Redirect(w, r, "/", http.StatusFound)
 }

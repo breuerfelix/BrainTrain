@@ -138,7 +138,13 @@
             <a href="/logout" class="white" style="text-align: right; font-size: 13px;">Logout</a>
         </div>
         <div class="profile-image-wrapper">
-            <a href="/profile"><img src="/static/images/icons/mein-profil.svg" width="40px"></a>
+            <a href="/profile">
+                {{if .HasPicture}}
+                <img src="{{.UserPictureURL}}" width="40px">
+                {{else}}
+                <img src="/static/images/icons/mein-profil.svg" width="40px">
+                {{end}}
+            </a>
         </div>
         {{else}}
         <form action="/login" method="POST">
@@ -147,7 +153,7 @@
             <button type="submit" class="button cpy">Login</button>
             <a href="/signup" class="white small">Registrieren</a>
         </form>
-        {{if .WrongPassword}}
+        {{if .ErrorWrongPassword}}
         <script>
             alert('Das eingegebene Passwort ist falsch!')
         </script>

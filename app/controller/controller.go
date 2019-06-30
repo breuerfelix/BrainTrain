@@ -21,6 +21,8 @@ type Categorie struct {
 type GeneralData struct {
 	UserID                 string
 	Username               string
+	HasPicture             bool
+	UserPictureURL         template.URL
 	User                   models.User
 	Filename               string
 	LoggedIn               bool
@@ -28,12 +30,16 @@ type GeneralData struct {
 	NewPrivateRegisters    int
 	ShowAnswer             bool
 	Categories             []Categorie
-	WrongPassword          bool
 	ErrorNameNotSet        bool
 	ErrorEmailNotSet       bool
 	ErrorPasswordNotSame   bool
 	ErrorUserExistsAlready bool
 	ErrorDuringSave        bool
+	ErrorWrongPassword     bool
+	ErrorDeleteProfile     bool
+
+	SuccessUpdateProfile   bool
+	SuccessDeleteProfile   bool
 }
 
 // PageData for templates
@@ -68,6 +74,13 @@ func HandleWithContext(controllerFunc controllerFunction, authRequired bool) fun
 			user.ID = data.UserID
 			user.GetByID()
 			data.User = *user
+
+			if user.Picture != "" {
+				data.HasPicture = true
+			}
+			
+			data.UserPictureURL = template.URL(user.Picture)
+
 		}
 
 		// Check if user is authenticated
@@ -77,10 +90,10 @@ func HandleWithContext(controllerFunc controllerFunction, authRequired bool) fun
 			return
 		}
 
-		if err, ok := session.Values["wrongPassword"].(bool); ok && err {
+		if err, ok := session.Values["errorWrongPassword"].(bool); ok && err {
 			fmt.Println("wrong password")
-			data.WrongPassword = true
-			session.Values["wrongPassword"] = false
+			data.ErrorWrongPassword = true
+			session.Values["errorWrongPassword"] = false
 			session.Save(r, w)
 		}
 
@@ -116,6 +129,27 @@ func HandleWithContext(controllerFunc controllerFunction, authRequired bool) fun
 			fmt.Println("errorDuringSave")
 			data.ErrorDuringSave = true
 			session.Values["errorDuringSave"] = false
+			session.Save(r, w)
+		}
+
+		if err, ok := session.Values["errorDeleteProfile"].(bool); ok && err {
+			fmt.Println("errorDeleteProfile")
+			data.ErrorDeleteProfile = true
+			session.Values["errorDeleteProfile"] = false
+			session.Save(r, w)
+		}
+
+		if err, ok := session.Values["successUpdateProfile"].(bool); ok && err {
+			fmt.Println("successUpdateProfile")
+			data.SuccessUpdateProfile = true
+			session.Values["successUpdateProfile"] = false
+			session.Save(r, w)
+		}
+
+		if err, ok := session.Values["successDeleteProfile"].(bool); ok && err {
+			fmt.Println("successDeleteProfile")
+			data.SuccessDeleteProfile = true
+			session.Values["successDeleteProfile"] = false
 			session.Save(r, w)
 		}
 

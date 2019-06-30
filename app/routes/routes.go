@@ -29,6 +29,9 @@ func Init() {
 	http.HandleFunc("/new-card", controller.NewCard)
 	http.HandleFunc("/edit-card", controller.EditCard)
 	http.HandleFunc("/delete-card", controller.DeleteCard)
+	http.HandleFunc("/upload-profile-picture", controller.UploadProfilePicture)
+	http.HandleFunc("/change-profile", controller.ChangeProfile)
+	http.HandleFunc("/delete-profil", controller.DeleteProfile)
 
 	// file server
 	fs := http.FileServer(http.Dir("static/"))
