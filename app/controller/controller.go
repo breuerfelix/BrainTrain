@@ -66,7 +66,6 @@ func HandleWithContext(controllerFunc controllerFunction, authRequired bool) fun
 		data := GeneralData{}
 
 		if auth, ok := session.Values["authenticated"].(bool); ok && auth {
-			fmt.Println("logged in")
 			data.LoggedIn = true
 			data.UserID, _ = session.Values["userID"].(string)
 			data.Username, _ = session.Values["userName"].(string)

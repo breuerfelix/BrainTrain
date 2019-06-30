@@ -7,7 +7,7 @@ import (
 	"github.com/breuerfelix/BrainTrain/app/models"
 )
 
-// CreateRegister
+// CreateRegister creates a new register
 func CreateRegister(w http.ResponseWriter, r *http.Request) {
 	session, _ := store.Get(r, "session")
 
@@ -25,11 +25,6 @@ func CreateRegister(w http.ResponseWriter, r *http.Request) {
 	if tempprivate == "on" {
 		private = true
 	}
-
-	fmt.Println(title)
-	fmt.Println(category)
-	fmt.Println(description)
-	fmt.Println(private)
 
 	register := models.NewRegister()
 	register.Owner = user.ID

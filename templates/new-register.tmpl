@@ -1,4 +1,5 @@
 {{define "content"}}
+{{$register := .register}}
 <div class="row">
     <div class="col">
         <h1 class="content-title text-big">Karteikasten erstellen / Karteikasten bearbeiten</h1>
@@ -11,13 +12,28 @@
     <div class="box white-bg col-xs-12 col-sm-11 col-md-10 col-lg-7">
         <div class="box-title text-big">Allgemeine Daten</div>
 
-        <form action="/create-register" method="POST">
+        <form
+            {{if $register}}
+            action="/update-register?register={{$register.ID}}"
+            {{else}}
+            action="/create-register"
+            {{end}}
+            method="POST"
+        >
             <div class="row">
                 <div class="col-label col-xs-4">
                     <label for="name">Titel</label>
                 </div>
                 <div class="col-input col-xs-8">
-                    <input required type="text" id="name" name="title">
+                    <input
+                        {{if $register}}
+                        value="{{$register.Title}}"
+                        {{end}}
+                        required
+                        type="text"
+                        id="name"
+                        name="title"
+                    >
                 </div>
 
                 <div class="col-label col-xs-4">
@@ -29,7 +45,14 @@
                             {{range .general.Categories}}
                             <optgroup label="{{.Name}}">
                                 {{range .SubCategories}}
-                                <option value="{{.}}">{{.}}</option>
+                                <option
+                                    {{if $register}}
+                                    {{if eq . $register.SubCategory}}
+                                    selected
+                                    {{end}}
+                                    {{end}}
+                                    value="{{.}}"
+                                >{{.}}</option>
                                 {{end}}
                             </optgroup>
                             {{end}}
@@ -41,14 +64,22 @@
                     <label for="description">Beschreibung</label>
                 </div>
                 <div class="col-input col-xs-8">
-                    <textarea name="description" required type="text" id="description" rows="6"></textarea>
+                    <textarea name="description" required type="text" id="description" rows="6">{{if $register}}{{$register.Description}}{{end}}</textarea>
                 </div>
 
                 <div class="col-label col-xs-4">
                     <label>Sichtbarkeit</label>
                 </div>
                 <div class="col-input col-xs-8">
-                    <input type="checkbox" name="private">
+                    <input
+                        {{if $register}}
+                        {{if $register.Private}}
+                        checked
+                        {{end}}
+                        {{end}}
+                        type="checkbox"
+                        name="private"
+                    >
                     <label style="margin-left: 10px">privat</label>
                 </div>
 
